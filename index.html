@@ -1,1 +1,103 @@
-hello world!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Certificate Generator</title>
+
+</head>
+
+<body>
+<div class="container mt-4" id="certificateContainer" style="min-width: 1920px;">
+    <div style="width:1920px; height:1376px">
+        <canvas id="canvas" height="1376px" width="1920px"></canvas>
+    </div>
+    <div class="row my-2">
+        <div class="col-12" style="zoom:3">
+            <a class="btn btn-success" href="#" id="download-btn">Sertifikanı İndir</a>
+            <button class="btn btn-primary" onclick="getCertificateNumber()">Oluştur!</button>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function padTo2Digits(num) {
+        return num.toString().padStart(2, '0');
+    }
+
+    function formatDate(date) {
+        return [
+            padTo2Digits(date.getDate()),
+            padTo2Digits(date.getMonth() + 1),
+            date.getFullYear(),
+        ].join('.');
+    }
+
+    // load google font == Monoton
+    WebFontConfig = {
+        google:{ families: ['Parisienne:400:latin-ext', 'Roboto Mono'] },
+        active: function(){start();},
+    };
+    (function(){
+        var wf = document.createElement("script");
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = 'true';
+        document.head.appendChild(wf);
+    })();
+
+
+    window.addEventListener('load', function() {
+        const screenWidth = screen.width;
+        const certificateContainer = document.getElementById('certificateContainer');
+        certificateContainer.style.zoom = screenWidth / 1920 / 2;
+    })
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let name = "";
+    const today = formatDate(new Date());
+    const downloadBtn = document.getElementById('download-btn');
+
+    const image = new Image()
+    image.src = 'sertifika.jpg'
+    image.onload = function () {
+        //drawImage(" ")
+    }
+
+    function drawImage(name, date, certificateNumber) {
+        // ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        ctx.font = '150px Parisienne';
+        ctx.fillStyle = '#001439';
+        ctx.textAlign = "center";
+        ctx.fillText(name, 950, 930);
+
+        ctx.font = '40px Roboto Mono';
+        ctx.fillText(date, 350, 1200);
+        ctx.fillText(certificateNumber, 1540, 1200);
+    }
+
+    downloadBtn.addEventListener('click', function () {
+        downloadBtn.href = canvas.toDataURL('image/jpg')
+        downloadBtn.download = 'sertifika- ' + name + '-dahianlamindaki.de.jpg';
+    })
+
+    function getCertificateNumber() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://api.countapi.xyz/hit/webinar.iltekin.com/certificate");
+        xhr.responseType = "json";
+        xhr.onload = function() {
+            name = "Sezer İltekin";
+            let certificateNumber = String(this.response.value).padStart(8, "0");
+            drawImage(name, today, certificateNumber);
+        }
+        xhr.send();
+    }
+
+</script>
+
+</body>
+</html>
