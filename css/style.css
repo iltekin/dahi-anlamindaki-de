@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  background-color: #b8c6db;
+  background-image: url("../image/background.jpg");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Comfortaa', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.quiz-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 10px rgba(100, 100, 100, 0.1);
+  width: 700px;
+  overflow: hidden;
+  max-width: 90%;
+  line-height: 1.6;
+}
+
+#quiz {
+  display: none;
+}
+
+#quiz-progress {
+  width:100%;
+  position: relative;
+  height: 5px;
+}
+
+#quiz-progress #progress-bar {
+  width:0%;
+  height: 5px;
+  transition: width 1s;
+}
+
+.blue-gradient {
+  background: #097f97 linear-gradient(90deg, #1a6271, #097f97);
+}
+
+.blue-gradient:hover {
+  background: #097f97 linear-gradient(90deg, #1a6271, #1a6271, #097f97);
+}
+
+#result {
+  padding: 20px;
+}
+
+#result input {
+  width: 100%;
+  padding: 20px;
+  font-size:30px;
+  border-radius: 10px;
+  font-family: inherit;
+}
+
+.quiz-header {
+  margin: 0;
+}
+
+.welcome-inner {
+  padding: 20px;
+}
+
+h2 {
+  padding: 2rem;
+  text-align: center;
+  margin: 0;
+  font-size: 20px;
+  color: #1b6371;
+  text-shadow: 2px 1px 10px #b8c6db;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+ul li {
+  display: flex;
+  font-size: 1.2rem;
+  padding: 0.75rem 2rem;
+  margin: 0;
+}
+
+ul li label {
+  cursor: pointer;
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+input[type="radio"] {
+  zoom: 1.5;
+  margin: auto;
+}
+
+#download-btn,
+button {
+  color: #fff;
+  border: none;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-family: inherit;
+  padding: 1.3rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+#download-btn {
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+img.logo {
+  position: absolute;
+  top: 3vw;
+  left: 3vw;
+  width: 15vw;
+}
+
+#questionInfo {
+  position: absolute;
+  bottom: 3vw;
+  left: 3vw;
+  width: 10vw;
+  font-size: 20px;
+}
+
+#questionInfo div:first-child {
+  border-bottom: 2px solid #000000;
+  margin-bottom: 5px;
+}
+
+#questionInfo #qNumber {
+  font-size: 40px;
+}
+
+#menu {
+  position: absolute;
+  top: 4vw;
+  right: 4vw;
+}
+
+#time {
+  position: absolute;
+  bottom: 3vw;
+  right: 3vw;
+  width: 10vw;
+  font-size: 20px;
+  text-align: right;
+}
+
+#time-progressbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+
+#time div:first-child {
+  border-bottom: 2px solid #000000;
+  margin-bottom: 5px;
+}
+
+#time #timeLeft {
+  font-size: 40px;
+}
+
+#footer {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  width: 80vw;
+  font-size: 12px;
+  text-align: center;
+}
+
+.selectedAnswer,
+li:hover {
+  background-color: #ebf4f6;
+}
+
+#certificateContainer {
+  min-width: 1920px;
+  display: none;
+}
+
+.progressbar {
+  width: 100%;
+}
+
+.progressbar .inner {
+  height: 5px;
+  animation: progressbar-countdown;
+  /* Placeholder, this will be updated using javascript */
+  animation-duration: 40s;
+  /* We stop in the end */
+  animation-iteration-count: 1;
+  /* Stay on pause when the animation is finished finished */
+  animation-fill-mode: forwards;
+  /* We start paused, we start the animation using javascript */
+  animation-play-state: paused;
+  /* We want a linear animation, ease-out is standard */
+  animation-timing-function: linear;
+}
+@keyframes progressbar-countdown {
+  0% {
+    width: 100%;
+    background: #1a6271;
+  }
+  100% {
+    width: 0%;
+    background: #097f97;
+  }
+}
+
+#menuContents {
+  margin-top: 100px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0 0 10px 10px rgba(100, 100, 100, 0.1);
+}
+
+.hideThis {
+  display: none;
+}
+
+.btn1 {
+  position: absolute;
+  right: 0;
+  top:0;
+  width: 50px;
+  height: 50px;
+  transition-duration: 0.5s;
+}
+.btn1 .icon-left {
+  transition-duration: 0.5s;
+  position: absolute;
+  height: 8px;
+  width: 30px;
+  top: 30px;
+  background-color: #212121;
+  left: 0px;
+}
+.btn1 .icon-left:before {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: 30px;
+  height: 8px;
+  background-color: #212121;
+  content: "";
+  top: -20px;
+}
+.btn1 .icon-left:after {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: 30px;
+  height: 8px;
+  background-color: #212121;
+  content: "";
+  top: 20px;
+}
+.btn1 .icon-left:hover {
+  cursor: pointer;
+}
+.btn1 .icon-right {
+  transition-duration: 0.5s;
+  position: absolute;
+  height: 8px;
+  width: 30px;
+  top: 30px;
+  background-color: #212121;
+  left: 30px;
+}
+.btn1 .icon-right:before {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: 30px;
+  height: 8px;
+  background-color: #212121;
+  content: "";
+  top: -20px;
+}
+.btn1 .icon-right:after {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: 30px;
+  height: 8px;
+  background-color: #212121;
+  content: "";
+  top: 20px;
+}
+.btn1.open .icon-left {
+  transition-duration: 0.5s;
+  background: transparent;
+}
+.btn1.open .icon-left:before {
+  transform: rotateZ(45deg) scaleX(1.4) translate(4px, 4px);
+}
+.btn1.open .icon-left:after {
+  transform: rotateZ(-45deg) scaleX(1.4) translate(4px, -4px);
+}
+.btn1.open .icon-right {
+  transition-duration: 0.5s;
+  background: transparent;
+}
+.btn1.open .icon-right:before {
+  transform: rotateZ(-45deg) scaleX(1.4) translate(-4px, 4px);
+}
+.btn1.open .icon-right:after {
+  transform: rotateZ(45deg) scaleX(1.4) translate(-4px, -4px);
+}
+.btn1:hover {
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 700px) {
+
+  body {
+    padding-top: 45vw;
+    padding-bottom: 15vw;
+  }
+
+  #questionInfo {
+    top: 3vw;
+    bottom: unset;
+    width: 30vw;
+  }
+
+  #time {
+    top: 15vw;
+    left: 3vw;
+    text-align: left;
+    right: unset;
+    bottom: unset;
+    width: 30vw;
+  }
+
+  #timeLeft {
+    font-size: 30px;
+  }
+
+  #time div:first-child,
+  #questionInfo div:first-child{
+    display: none;
+  }
+
+  #download-btn {
+    zoom: 2;
+  }
+
+  img.logo {
+    position: absolute;
+    top: 10vw;
+    left: 50%;
+    height: 30vw;
+    width: auto;
+    transform: translateX(-50%);
+  }
+
+  .btn1 {
+    zoom:0.8;
+  }
+
+}

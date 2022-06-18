@@ -1,103 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <title>Certificate Generator</title>
-
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <title>Dahi Anlamındaki De</title>
 </head>
-
 <body>
-<div class="container mt-4" id="certificateContainer" style="min-width: 1920px;">
+
+<div id='time-progressbar'></div>
+
+<div id="menu">
+    <div id="hamburger" class="menu btn1">
+        <div class="icon-left"></div>
+        <div class="icon-right"></div>
+    </div>
+    <div id="menuContents" class="hideThis">
+        <ul>
+            <li>Test</li>
+            <li>Test</li>
+            <li>Test</li>
+            <li>Test</li>
+        </ul>
+    </div>
+</div>
+
+<img class="logo" src="image/logo.png" alt="dahi anlamındaki de">
+
+<div id="questionInfo">
+    <div>SORU</div>
+    <div><span id="qNumber">0</span> / <span id="qLimit">0</span></div>
+</div>
+
+<div id="time">
+    <div>KALAN SÜRE</div>
+    <div><span id="timeLeft">0</span></div>
+</div>
+
+<div id="certificateContainer">
     <div style="width:1920px; height:1376px">
         <canvas id="canvas" height="1376px" width="1920px"></canvas>
     </div>
     <div class="row my-2">
         <div class="col-12" style="zoom:3">
-            <a class="btn btn-success" href="#" id="download-btn">Sertifikanı İndir</a>
-            <button class="btn btn-primary" onclick="getCertificateNumber()">Oluştur!</button>
+            <a href="#" class="blue-gradient" id="download-btn">Sertifikamı İndir</a>
         </div>
     </div>
 </div>
 
-<script>
+<div id="qc" class="quiz-container">
+    <div id="quiz-progress">
+        <div id="progress-bar" class="blue-gradient"></div>
+    </div>
 
-    function padTo2Digits(num) {
-        return num.toString().padStart(2, '0');
-    }
+    <div class="quiz-inner" id="welcome-message">
+        <div class="quiz-header">
+            <h2>Hoş geldiniz!</h2>
+            <div class="welcome-inner">
+                Bu sayfada sizi küçük bir test bekliyor. 10 soruya 150 saniye içinde cevap verebilirseniz bir "Dahi Anlamındaki De Sertifikası" kazanacaksanız.
+            </div>
+        </div>
+        <button id="start" class="blue-gradient">Başla →</button>
+    </div>
 
-    function formatDate(date) {
-        return [
-            padTo2Digits(date.getDate()),
-            padTo2Digits(date.getMonth() + 1),
-            date.getFullYear(),
-        ].join('.');
-    }
+    <div class="quiz-inner" id="quiz">
+        <div class="quiz-header">
+            <h2 id="question">Question text</h2>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" id="a" class="answer">
+                    <label for="a" id="a_text">Question</label>
+                </li>
 
-    // load google font == Monoton
-    WebFontConfig = {
-        google:{ families: ['Parisienne:400:latin-ext', 'Roboto Mono'] },
-        active: function(){start();},
-    };
-    (function(){
-        var wf = document.createElement("script");
-        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-        wf.async = 'true';
-        document.head.appendChild(wf);
-    })();
+                <li>
+                    <input type="radio" name="answer" id="b" class="answer">
+                    <label for="b" id="b_text">Question</label>
+                </li>
 
+                <li>
+                    <input type="radio" name="answer" id="c" class="answer">
+                    <label for="c" id="c_text">Question</label>
+                </li>
 
-    window.addEventListener('load', function() {
-        const screenWidth = screen.width;
-        const certificateContainer = document.getElementById('certificateContainer');
-        certificateContainer.style.zoom = screenWidth / 1920 / 2;
-    })
+                <li>
+                    <input type="radio" name="answer" id="d" class="answer">
+                    <label for="d" id="d_text">Question</label>
+                </li>
+            </ul>
+        </div>
+        <button id="submit" class="blue-gradient">Cevapla →</button>
+    </div>
+</div>
 
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    let name = "";
-    const today = formatDate(new Date());
-    const downloadBtn = document.getElementById('download-btn');
+<div id="footer">Bu web sitesi Sezer İltekin tarafından kodlanmıştır</div>
 
-    const image = new Image()
-    image.src = 'sertifika.jpg'
-    image.onload = function () {
-        //drawImage(" ")
-    }
-
-    function drawImage(name, date, certificateNumber) {
-        // ctx.clearRect(0, 0, canvas.width, canvas.height)
-        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-        ctx.font = '150px Parisienne';
-        ctx.fillStyle = '#001439';
-        ctx.textAlign = "center";
-        ctx.fillText(name, 950, 930);
-
-        ctx.font = '40px Roboto Mono';
-        ctx.fillText(date, 350, 1200);
-        ctx.fillText(certificateNumber, 1540, 1200);
-    }
-
-    downloadBtn.addEventListener('click', function () {
-        downloadBtn.href = canvas.toDataURL('image/jpg')
-        downloadBtn.download = 'sertifika- ' + name + '-dahianlamindaki.de.jpg';
-    })
-
-    function getCertificateNumber() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://api.countapi.xyz/hit/dahianlamindaki.de/certificate");
-        xhr.responseType = "json";
-        xhr.onload = function() {
-            name = "Sezer İltekin";
-            let certificateNumber = String(this.response.value).padStart(8, "0");
-            drawImage(name, today, certificateNumber);
-        }
-        xhr.send();
-    }
-
-</script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
