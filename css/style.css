@@ -335,7 +335,8 @@ li:hover {
 @media screen and (max-width: 700px) {
 
   body {
-    padding-top: 33vw;
+    align-items: start;
+    padding-top: 40vw;
     padding-bottom: 12vw;
   }
 
