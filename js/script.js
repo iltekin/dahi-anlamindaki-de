@@ -112,7 +112,6 @@ function createProgressbar(id, duration, callback) {
 const welcomeMessage = document.getElementById("welcome-message");
 const quizElement = document.getElementById("quiz");
 const startButton = document.getElementById("start");
-const timeContainer = document.getElementById("time");
 const timeLeft = document.getElementById("timeLeft");
 const questionInfo = {};
 var counter;
@@ -155,7 +154,6 @@ startButton.addEventListener('click', function () {
     loadQuiz();
     startTime();
     counter = setInterval(timer, 1000);
-    playSound("next");
     start = new Date();
 })
 

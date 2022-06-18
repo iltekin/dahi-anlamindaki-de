@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #b8c6db;
+  background-color: #ffffff;
   background-image: url("../image/background.jpg");
   background-position: top;
   background-size: cover;
@@ -335,8 +335,22 @@ li:hover {
 @media screen and (max-width: 700px) {
 
   body {
-    padding-top: 45vw;
-    padding-bottom: 15vw;
+    padding-top: 33vw;
+    padding-bottom: 12vw;
+  }
+
+  h2 {
+    font-size: 15px;
+    padding: 1rem;
+  }
+
+  ul li {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  .quiz-container {
+    z-index: 2;
   }
 
   #questionInfo {
@@ -369,7 +383,7 @@ li:hover {
 
   img.logo {
     position: absolute;
-    top: 10vw;
+    top: 3vw;
     left: 50%;
     height: 30vw;
     width: auto;
@@ -378,6 +392,10 @@ li:hover {
 
   .btn1 {
     zoom:0.8;
+  }
+
+  input[type="radio"] {
+    zoom: normal;
   }
 
 }
