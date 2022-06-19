@@ -82,6 +82,7 @@ document.querySelectorAll('li').forEach(item => {
     item.addEventListener('click', function() {
         clearLiHighlights();
         item.classList.add("selectedAnswer");
+        item.children[0].checked = true;
     })
 });
 
