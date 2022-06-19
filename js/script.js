@@ -11,10 +11,9 @@ function formatDate(date) {
 }
 
 function toNameCase(str) {
-    const newStr = str.split(' ')
+    return str.split(' ')
         .map(w => w[0].toLocaleUpperCase('tr-TR') + w.substring(1).toLocaleLowerCase('tr-TR'))
         .join(' ');
-    return newStr;
 }
 
 WebFont.load({
@@ -32,7 +31,7 @@ window.addEventListener('load', function() {
         certificateContainer.style.zoom = screenWidth / 1920 / 2;
     }
     document.getElementById("timeLeft").innerText = totalAnswerTime;
-    document.getElementById("qLimit").innerText = quizLimit;
+    document.getElementById("qLimit").innerText = quizLimit.toString();
 })
 
 const canvas = document.getElementById('canvas');
@@ -74,7 +73,7 @@ downloadBtn.addEventListener('click', function () {
 });
 
 document.querySelectorAll('li').forEach(item => {
-    item.addEventListener('click', event => {
+    item.addEventListener('click', function() {
 
         document.querySelectorAll('.selectedAnswer').forEach(item2 => {
             item2.classList.remove("selectedAnswer");
@@ -87,11 +86,11 @@ document.querySelectorAll('li').forEach(item => {
 
 function createProgressbar(id, duration, callback) {
     // We select the div that we want to turn into a progressbar
-    var progressbar = document.getElementById(id);
+    let progressbar = document.getElementById(id);
     progressbar.className = 'progressbar';
 
     // We create the div that changes width to show progress
-    var progressbarinner = document.createElement('div');
+    let progressbarinner = document.createElement('div');
     progressbarinner.className = 'inner';
 
     // Now we set the animation parameters
@@ -114,7 +113,7 @@ const quizElement = document.getElementById("quiz");
 const startButton = document.getElementById("start");
 const timeLeft = document.getElementById("timeLeft");
 const questionInfo = {};
-var counter;
+let counter;
 
 questionInfo.parent = document.getElementById("questionInfo");
 questionInfo.qNumber = document.getElementById("qNumber");
@@ -137,7 +136,7 @@ function startTime(){
 }
 
 function stopTime(){
-    var bar = document.getElementById("time-progressbar");
+    let bar = document.getElementById("time-progressbar");
     bar.removeEventListener("animationend", afterTime, true);
     bar.innerHTML = "";
 }
@@ -158,7 +157,7 @@ startButton.addEventListener('click', function () {
 })
 
 function getCertificateNumber(name) {
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open("GET", "https://api.countapi.xyz/hit/dahianlamindaki.de/test");
     xhr.responseType = "json";
     xhr.onload = function() {
@@ -212,8 +211,8 @@ function loadQuiz() {
     c_text.innerText = currentQuizData.c
     d_text.innerText = currentQuizData.d
 
-    questionInfo.qNumber.innerText = currentQuiz + +1;
-    questionInfo.qLimit.innerText = quizLimit;
+    questionInfo.qNumber.innerText = (currentQuiz + +1).toString();
+    questionInfo.qLimit.innerText = quizLimit.toString();
 }
 
 function timer(){
@@ -241,14 +240,20 @@ function getSelected() {
     return answer
 }
 
+let sound = {
+    failed: new Audio('sound/failed.mp3'),
+    invalid: new Audio('sound/invalid.mp3'),
+    select: new Audio('sound/select.mp3'),
+    next: new Audio('sound/next.mp3'),
+}
+
 function playSound(file){
-    var audio = new Audio('sound/' + file + '.mp3');
-    audio.play();
+    sound[file].play();
 }
 
 function getName() {
-    var nameInput = document.getElementById("name");
-    var nameValue = nameInput.value;
+    let nameInput = document.getElementById("name");
+    let nameValue = nameInput.value;
 
     if(nameValue === "" || nameValue === undefined){
         nameInput.placeholder = "Buraya adınızı yazmalısınız";
@@ -259,7 +264,7 @@ function getName() {
 }
 
 document.querySelectorAll('.answer').forEach(item => {
-    item.addEventListener('click', event => {
+    item.addEventListener('click', function() {
         playSound("select");
     })
 });
@@ -267,7 +272,7 @@ document.querySelectorAll('.answer').forEach(item => {
 submitBtn.addEventListener('click', () => {
     const answer = getSelected()
     if(answer) {
-        var widthInPercent = currentQuiz * (100/quizLimit) + (100/quizLimit);
+        let widthInPercent = currentQuiz * (100/quizLimit) + (100/quizLimit);
         document.getElementById("progress-bar").style.width = widthInPercent + "%";
         if(answer === quizData[currentQuiz].correct) {
             score++
@@ -281,7 +286,7 @@ submitBtn.addEventListener('click', () => {
         } else {
 
             clearInterval(counter);
-            var endDate = new Date();
+            let endDate = new Date();
             totalTime = Math.floor((endDate.getTime() - start.getTime()) / 1000);
 
             stopTime();
