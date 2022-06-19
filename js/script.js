@@ -120,7 +120,7 @@ questionInfo.qNumber = document.getElementById("qNumber");
 questionInfo.qLimit = document.getElementById("qLimit");
 
 const afterTime = function() {
-    sound.failed.play();
+    play("failed");
     quiz.innerHTML = `
                 <div id="result">
                 <h2>Maalesef...</h2>
@@ -240,11 +240,11 @@ function getSelected() {
     return answer
 }
 
-let sound = {
-    failed: document.getElementById("failed"),
-    invalid: document.getElementById("invalid"),
-    select: document.getElementById("select"),
-    next: document.getElementById("next"),
+function play(sound) {
+    let audio = document.getElementById(sound);
+    audio.pause();
+    audio.currentTime = 0
+    audio.play();
 }
 
 function getName() {
@@ -253,7 +253,7 @@ function getName() {
 
     if(nameValue === "" || nameValue === undefined){
         nameInput.placeholder = "Buraya adınızı yazmalısınız";
-        sound.invalid.play();
+        play("invalid");
     } else {
         getCertificateNumber(nameValue)
     }
@@ -261,7 +261,7 @@ function getName() {
 
 document.querySelectorAll('.answer').forEach(item => {
     item.addEventListener('click', function() {
-        sound.select.play();
+        play("select");
     })
 });
 
@@ -278,7 +278,7 @@ submitBtn.addEventListener('click', () => {
 
         if(currentQuiz < quizLimit) {
             loadQuiz();
-            sound.next.play();
+            play("next");
         } else {
 
             clearInterval(counter);
@@ -287,7 +287,7 @@ submitBtn.addEventListener('click', () => {
 
             stopTime();
             if(score < quizLimit){
-                sound.failed.play();
+                play("failed");
                 quiz.innerHTML = `
                 <div id="result">
                 <h2>Maalesef...</h2>
@@ -307,6 +307,6 @@ submitBtn.addEventListener('click', () => {
             }
         }
     } else {
-        sound.invalid.play();
+        play("invalid");
     }
 })
