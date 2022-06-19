@@ -241,10 +241,10 @@ function getSelected() {
 }
 
 let sound = {
-    failed: new Audio('sound/failed.mp3'),
-    invalid: new Audio('sound/invalid.mp3'),
-    select: new Audio('sound/select.mp3'),
-    next: new Audio('sound/next.mp3'),
+    failed: document.getElementById("failed"),
+    invalid: document.getElementById("invalid"),
+    select: document.getElementById("select"),
+    next: document.getElementById("next"),
 }
 
 function getName() {
