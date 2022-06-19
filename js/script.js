@@ -153,7 +153,7 @@ startButton.addEventListener('click', function () {
 
     loadQuiz();
     startTime();
-    counter = setInterval(timer, 1000);
+    //counter = setInterval(timer, 1000);
     start = new Date();
 })
 
