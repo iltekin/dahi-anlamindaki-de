@@ -196,6 +196,10 @@ img.logo {
   text-align: center;
 }
 
+#footer img {
+  height: 15px;
+}
+
 .selectedAnswer,
 li:hover {
   background-color: #ebf4f6;
