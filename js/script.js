@@ -72,13 +72,15 @@ downloadBtn.addEventListener('click', function () {
     downloadBtn.download = 'sertifika- ' + name + '-dahianlamindaki.de.jpg';
 });
 
+function clearLiHighlights(){
+    document.querySelectorAll('.selectedAnswer').forEach(item => {
+        item.classList.remove("selectedAnswer");
+    });
+}
+
 document.querySelectorAll('li').forEach(item => {
     item.addEventListener('click', function() {
-
-        document.querySelectorAll('.selectedAnswer').forEach(item2 => {
-            item2.classList.remove("selectedAnswer");
-        });
-
+        clearLiHighlights();
         item.classList.add("selectedAnswer");
     })
 });
@@ -278,6 +280,7 @@ submitBtn.addEventListener('click', () => {
 
         if(currentQuiz < quizLimit) {
             loadQuiz();
+            clearLiHighlights();
             play("next");
         } else {
 
