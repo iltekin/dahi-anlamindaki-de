@@ -79,11 +79,12 @@ function clearLiHighlights(){
 }
 
 document.querySelectorAll('li').forEach(item => {
-    item.addEventListener('click', function() {
+    item.onclick =  function() {
+        playNow("select");
         clearLiHighlights();
         item.classList.add("selectedAnswer");
         item.children[0].checked = true;
-    })
+    }
 });
 
 
@@ -123,7 +124,7 @@ questionInfo.qNumber = document.getElementById("qNumber");
 questionInfo.qLimit = document.getElementById("qLimit");
 
 const afterTime = function() {
-    play("failed");
+    playNow("failed");
     quiz.innerHTML = `
                 <div id="result">
                 <h2>Maalesef...</h2>
@@ -243,10 +244,9 @@ function getSelected() {
     return answer
 }
 
-function play(sound) {
+function playNow(sound) {
+    console.log(sound + " playedd");
     let audio = document.getElementById(sound);
-    audio.pause();
-    audio.currentTime = 0;
     audio.play();
 }
 
@@ -256,17 +256,11 @@ function getName() {
 
     if(nameValue === "" || nameValue === undefined){
         nameInput.placeholder = "Buraya adınızı yazmalısınız";
-        play("invalid");
+        playNow("invalid");
     } else {
         getCertificateNumber(nameValue)
     }
 }
-
-document.querySelectorAll('.answer').forEach(item => {
-    item.addEventListener('click', function() {
-        play("select");
-    })
-});
 
 submitBtn.addEventListener('click', () => {
     const answer = getSelected()
@@ -282,7 +276,7 @@ submitBtn.addEventListener('click', () => {
         if(currentQuiz < quizLimit) {
             loadQuiz();
             clearLiHighlights();
-            play("next");
+            playNow("next");
         } else {
 
             clearInterval(counter);
@@ -291,7 +285,7 @@ submitBtn.addEventListener('click', () => {
 
             stopTime();
             if(score < quizLimit){
-                play("failed");
+                playNow("failed");
                 quiz.innerHTML = `
                 <div id="result">
                 <h2>Maalesef...</h2>
@@ -311,6 +305,6 @@ submitBtn.addEventListener('click', () => {
             }
         }
     } else {
-        play("invalid");
+        playNow("invalid");
     }
 })
