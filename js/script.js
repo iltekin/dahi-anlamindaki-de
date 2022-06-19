@@ -152,7 +152,7 @@ startButton.addEventListener('click', function () {
 
     loadQuiz();
     startTime();
-    //counter = setInterval(timer, 1000);
+    counter = setInterval(timer, 1000);
     start = new Date();
 })
 
@@ -243,7 +243,7 @@ function getSelected() {
 function play(sound) {
     let audio = document.getElementById(sound);
     audio.pause();
-    audio.currentTime = 0
+    audio.currentTime = 0;
     audio.play();
 }
 
