@@ -51,27 +51,32 @@ function parseQuery(queryString) {
 }
 
 function checkShared() {
-    const queryString = window.location.search;
-    const urlParams = parseQuery(queryString);
     let abort = false;
     let parameters = {};
-
     const shareParams = ["n", "d", "c", "t"];
 
-        for(const param of shareParams) {
+    const queryString = window.location.search;
 
-                if(deco(urlParams[param]).length === 0) {
-                    abort = true;
-                    console.log("Aborted: " + urlParams[param]);
-                } else {
-                    parameters[param] = deco(urlParams[param]);
-                }
+    if(queryString.length > 0) {
+        const urlParams = parseQuery(queryString);
+        for (const param of shareParams) {
+            if (!urlParams[param] || deco(urlParams[param]).length === 0) {
+                abort = true;
+                console.log("Aborted: " + urlParams[param]);
+            } else {
+                parameters[param] = deco(urlParams[param]);
+            }
         }
+    } else {
+        abort = true;
+    }
 
-        if(!abort) {
-            drawImage(parameters["n"], parameters["d"], parameters["c"], parameters["t"]);
-            shared = true;
-        }
+    if(!abort) {
+        drawImage(parameters["n"], parameters["d"], parameters["c"], parameters["t"]);
+        shared = true;
+    }
+
+
 }
 
 window.addEventListener('load', function() {
@@ -120,7 +125,7 @@ function drawImage(name, date, certificateNumber, totalTime) {
 
     document.getElementById("qc").style.display = "none";
     document.getElementById("loader").style.display = "block";
-    document.getElementById("share-btn").href = "https://dahianlamindaki.de?n=" + enco(name) + "&d=" + enco(date) + "&c=" + enco(certificateNumber) + "&t=" + enco(totalTime);
+    document.getElementById("copy-btn").href = "https://dahianlamindaki.de?n=" + enco(name) + "&d=" + enco(date) + "&c=" + enco(certificateNumber.toString()) + "&t=" + enco(totalTime.toString());
 
     let keyboard = new Audio("sound/keyboard.mp3");
     keyboard.play();
