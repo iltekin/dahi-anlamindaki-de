@@ -321,7 +321,6 @@ function getSelected() {
 }
 
 function playNow(sound) {
-    console.log(sound + " playedd");
     let audio = document.getElementById(sound);
     audio.play();
 }
