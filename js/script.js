@@ -1,3 +1,10 @@
+CSS.registerProperty({
+    name: "--p",
+    syntax: "<integer>",
+    initialValue: 0,
+    inherits: true,
+});
+
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
 }
@@ -16,11 +23,56 @@ function toNameCase(str) {
         .join(' ');
 }
 
+function enco(str){
+    return CryptoJS.AES.encrypt(str, "not-a-secret").toString();
+}
+
+function deco(encrypted){
+    var decrypted = CryptoJS.AES.decrypt(encrypted, "not-a-secret");
+    return decrypted.toString(CryptoJS.enc.Utf8);
+}
+
 WebFont.load({
     google: {
         families: ['Parisienne:400:latin-ext', 'Roboto Mono', 'Recursive']
     }
 });
+
+let shared = false;
+
+function parseQuery(queryString) {
+    var query = {};
+    var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+    for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+    return query;
+}
+
+function checkShared() {
+    const queryString = window.location.search;
+    const urlParams = parseQuery(queryString);
+    let abort = false;
+    let parameters = {};
+
+    const shareParams = ["n", "d", "c", "t"];
+
+        for(const param of shareParams) {
+
+                if(deco(urlParams[param]).length === 0) {
+                    abort = true;
+                    console.log("Aborted: " + urlParams[param]);
+                } else {
+                    parameters[param] = deco(urlParams[param]);
+                }
+        }
+
+        if(!abort) {
+            drawImage(parameters["n"], parameters["d"], parameters["c"], parameters["t"]);
+            shared = true;
+        }
+}
 
 window.addEventListener('load', function() {
     const screenWidth = screen.width;
@@ -32,6 +84,9 @@ window.addEventListener('load', function() {
     }
     document.getElementById("timeLeft").innerText = totalAnswerTime;
     document.getElementById("qLimit").innerText = quizLimit.toString();
+
+    checkShared();
+
 })
 
 const canvas = document.getElementById('canvas');
@@ -64,7 +119,18 @@ function drawImage(name, date, certificateNumber, totalTime) {
     ctx.fillText(totalTime, 930, 470);
 
     document.getElementById("qc").style.display = "none";
-    document.getElementById("certificateContainer").style.display = "block";
+    document.getElementById("loader").style.display = "block";
+    document.getElementById("share-btn").href = "https://dahianlamindaki.de?n=" + enco(name) + "&d=" + enco(date) + "&c=" + enco(certificateNumber) + "&t=" + enco(totalTime);
+
+    let keyboard = new Audio("sound/keyboard.mp3");
+    keyboard.play();
+
+    setTimeout(function() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("certificateContainer").style.display = "block";
+        let created = new Audio("sound/created.mp3");
+        created.play();
+    }, 10000);
 }
 
 downloadBtn.addEventListener('click', function () {
@@ -128,7 +194,9 @@ const afterTime = function() {
     quiz.innerHTML = `
                 <div id="result">
                 <h2>Maalesef...</h2>
-                Belirlenen süre içinde soruyu cevaplayamadınız. Bu yüzden test sona erdi.
+                <div class="result-inner">
+                    Belirlenen süre içinde soruyu cevaplayamadınız. Bu yüzden test sona erdi.
+                </div>
                 </div>
                 <button class="blue-gradient" onclick="location.reload()">Yeniden Dene</button>
            `
@@ -145,9 +213,11 @@ function stopTime(){
     bar.innerHTML = "";
 }
 
-document.getElementById("hamburger").addEventListener('click', function () {
+document.getElementById("info").addEventListener('click', function () {
     this.classList.toggle("open");
     document.getElementById("menuContents").classList.toggle("hideThis");
+    document.getElementById("questionMark").classList.toggle("hideThis");
+    document.getElementById("closeIcon").classList.toggle("hideThis");
 })
 
 startButton.addEventListener('click', function () {
@@ -289,16 +359,22 @@ submitBtn.addEventListener('click', () => {
                 quiz.innerHTML = `
                 <div id="result">
                 <h2>Maalesef...</h2>
-                ${quizLimit} sorunun ${score} tanesini doğru cevapladınız. Sertifika alabilmek için tamamını doğru cevaplamalısınız. Dahi anlamındaki de ve ek olan -de konusuna biraz daha çalışmanız gerekiyor.
+                <div class="result-inner">
+                    ${quizLimit} sorunun ${score} tanesini doğru cevapladınız. Sertifika alabilmek için tamamını doğru cevaplamalısınız. Dahi anlamındaki de ve ek olan -de konusuna biraz daha çalışmanız gerekiyor.
+                </div>
                 </div>
                 <button class="blue-gradient" onclick="location.reload()">Yeniden Dene</button>
            `
             } else {
+                let tada = new Audio("sound/tada.mp3");
+                tada.play();
                 quiz.innerHTML = `
                 <div id="result">
                 <h2>Tebrikler!</h2>
-                <h3>${quizLimit} sorunun tamamını doğru cevapladınız.</h3>
-                <input type="text" id="name" name="name" placeholder="Ad Soyad">
+                <div class="result-inner">
+                    ${quizLimit} sorunun tamamını doğru cevapladınız.
+                    <input type="text" id="name" name="name" placeholder="Ad Soyad">
+                </div>
                 </div>
                 <button class="blue-gradient" onclick="getName()">Sertifikamı Oluştur</button>
             `

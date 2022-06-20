@@ -12,17 +12,17 @@
 <div id='time-progressbar'></div>
 
 <div id="menu">
-    <div id="hamburger" class="menu btn1">
-        <div class="icon-left"></div>
-        <div class="icon-right"></div>
+
+    <div id="info">
+        <span id="questionMark">?</span>
+        <span id="closeIcon" class="hideThis">x</span>
     </div>
+
     <div id="menuContents" class="hideThis">
-        <ul>
-            <li>Test</li>
-            <li>Test</li>
-            <li>Test</li>
-            <li>Test</li>
-        </ul>
+        <h2>Nedir?</h2>
+        <div class="menu-inner">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
     </div>
 </div>
 
@@ -43,8 +43,10 @@
         <canvas id="canvas" height="1376px" width="1920px"></canvas>
     </div>
     <div class="row my-2">
-        <div class="col-12" style="zoom:3">
+        <div class="button-container">
             <a href="#" class="blue-gradient" id="download-btn">Sertifikamı İndir</a>
+            <a href="#" class="other-btn blue-gradient" id="copy-btn">Linki Kopyala</a>
+            <a href="#" class="other-btn blue-gradient" id="share-btn">Paylaş</a>
         </div>
     </div>
 </div>
@@ -93,6 +95,14 @@
     </div>
 </div>
 
+<div id="loader">
+    <div class="certProgress certProgress-moved">
+        <div class="certProgressBar"></div>
+        <div class="certProgressLoader" style="--n: 1; --f: 0;"></div>
+    </div>
+    <h2 style="color:#000000;">SERTİFİKA OLUŞTURULUYOR...</h2>
+</div>
+
 <div id="footer">
     <a href="https://iltekin.com/projects/dahi-anlamindaki-de/" target="_blank">
         <img src="image/iltekin.svg" alt="iltekin brainworks">
@@ -115,6 +125,7 @@
     <source src="sound/select.mp3" type="audio/mpeg">
 </audio>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 <script src="js/data.js?v=1.0.6"></script>
 <script src="js/script.js?v=1.0.6"></script>

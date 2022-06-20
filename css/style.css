@@ -65,15 +65,19 @@ audio {
 #result input {
   width: 100%;
   padding: 20px;
-  font-size:30px;
-  border-radius: 10px;
+  font-size: 24px;
   font-family: inherit;
+  border: none;
+  border-bottom: 1px solid #000000;
+  outline: none;
+  margin-top: 20px;
 }
 
 .quiz-header {
   margin: 0;
 }
 
+.result-inner,
 .welcome-inner {
   padding: 20px;
 }
@@ -112,23 +116,32 @@ input[type="radio"] {
   margin: auto;
 }
 
+.other-btn,
 #download-btn,
 button {
+  margin-top: 10px;
+  border-radius: 10px;
   color: #fff;
   border: none;
   display: block;
-  width: 100%;
+  max-width: 100%;
   cursor: pointer;
   font-size: 1.1rem;
   font-family: inherit;
   padding: 1.3rem;
   text-align: center;
   text-decoration: none;
+  flex-grow: 1;
 }
 
-#download-btn {
-  margin-top: 10px;
-  border-radius: 10px;
+.other-btn {
+  flex-grow: unset;
+  margin-left: 10px;
+}
+
+.button-container {
+  zoom:3;
+  display: flex;
 }
 
 img.logo {
@@ -159,6 +172,7 @@ img.logo {
   position: absolute;
   top: 4vw;
   right: 4vw;
+  z-index: 3;
 }
 
 #time {
@@ -194,6 +208,7 @@ img.logo {
   width: 80vw;
   font-size: 12px;
   text-align: center;
+  z-index: -1;
 }
 
 #footer img {
@@ -203,6 +218,11 @@ img.logo {
 .selectedAnswer,
 li:hover {
   background-color: #ebf4f6;
+}
+
+#result h2,
+#welcome-message h2 {
+  padding-bottom: 0;
 }
 
 #certificateContainer {
@@ -240,108 +260,99 @@ li:hover {
 }
 
 #menuContents {
-  margin-top: 100px;
+  margin-top: 40px;
   border-radius: 10px;
   background-color: #ffffff;
   padding: 10px;
-  box-shadow: 0 0 10px 10px rgba(100, 100, 100, 0.1);
+  box-shadow: 0 0 10px 10px rgb(100 100 100 / 10%);
+  width: 300px;
+}
+#menuContents h2 {
+  padding: 1rem;
+}
+
+.menu-inner {
+  padding: 0 1rem 1rem;
+}
+
+#info {
+  background: #000000;
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
 }
 
 .hideThis {
   display: none;
 }
 
-.btn1 {
+#loader {
+  display: none;
+  position: relative;
+}
+
+.certProgress {
+  border-radius: 30px;
+  background-color: #e4e1e2;
+}
+
+.certProgressBar {
+  height: 18px;
+  border-radius: 30px;
+  transition: 0.4s linear;
+  transition-property: width, background-color;
+}
+
+.certProgress-moved .certProgressBar {
+  background-color: #106b00;
+  animation: certProgress 10s infinite;
+}
+
+@keyframes certProgress {
+  0% {
+    width: 0%;
+    background: #68a15a;
+  }
+
+  100% {
+    width: 100%;
+    background: #015e01;
+    box-shadow: 0 0 40px #015e01;
+  }
+}
+
+.certProgressLoader {
+  --p: 0;
+  animation: p 10s steps(100) infinite;
+  counter-reset: p var(--p);
+  font-size: 2.1em;
   position: absolute;
+  top: 0;
   right: 0;
-  top:0;
-  width: 50px;
-  height: 50px;
-  transition-duration: 0.5s;
-}
-.btn1 .icon-left {
-  transition-duration: 0.5s;
-  position: absolute;
-  height: 8px;
-  width: 30px;
-  top: 30px;
-  background-color: #212121;
-  left: 0px;
-}
-.btn1 .icon-left:before {
-  transition-duration: 0.5s;
-  position: absolute;
-  width: 30px;
-  height: 8px;
-  background-color: #212121;
-  content: "";
-  top: -20px;
-}
-.btn1 .icon-left:after {
-  transition-duration: 0.5s;
-  position: absolute;
-  width: 30px;
-  height: 8px;
-  background-color: #212121;
-  content: "";
-  top: 20px;
-}
-.btn1 .icon-left:hover {
-  cursor: pointer;
-}
-.btn1 .icon-right {
-  transition-duration: 0.5s;
-  position: absolute;
-  height: 8px;
-  width: 30px;
-  top: 30px;
-  background-color: #212121;
-  left: 30px;
-}
-.btn1 .icon-right:before {
-  transition-duration: 0.5s;
-  position: absolute;
-  width: 30px;
-  height: 8px;
-  background-color: #212121;
-  content: "";
-  top: -20px;
-}
-.btn1 .icon-right:after {
-  transition-duration: 0.5s;
-  position: absolute;
-  width: 30px;
-  height: 8px;
-  background-color: #212121;
-  content: "";
-  top: 20px;
-}
-.btn1.open .icon-left {
-  transition-duration: 0.5s;
-  background: transparent;
-}
-.btn1.open .icon-left:before {
-  transform: rotateZ(45deg) scaleX(1.4) translate(4px, 4px);
-}
-.btn1.open .icon-left:after {
-  transform: rotateZ(-45deg) scaleX(1.4) translate(4px, -4px);
-}
-.btn1.open .icon-right {
-  transition-duration: 0.5s;
-  background: transparent;
-}
-.btn1.open .icon-right:before {
-  transform: rotateZ(-45deg) scaleX(1.4) translate(-4px, 4px);
-}
-.btn1.open .icon-right:after {
-  transform: rotateZ(45deg) scaleX(1.4) translate(-4px, -4px);
-}
-.btn1:hover {
-  cursor: pointer;
+  color: #000000;
+  transform: translateY(-100%);
 }
 
+.certProgressLoader:after {
+  content: counter(p) "%";
+}
 
-@media screen and (max-width: 700px) {
+@keyframes p {
+  90%,
+  100% {
+    --p: 100;
+  }
+}
+
+@media screen and (max-width: 921px) {
 
   body {
     align-items: start;
