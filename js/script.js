@@ -32,12 +32,6 @@ function deco(encrypted){
     return decrypted.toString(CryptoJS.enc.Utf8);
 }
 
-WebFont.load({
-    google: {
-        families: ['Parisienne:400:latin-ext', 'Roboto Mono', 'Recursive']
-    }
-});
-
 let shared = false;
 
 function parseQuery(queryString) {
@@ -80,6 +74,13 @@ function checkShared() {
 }
 
 window.addEventListener('load', function() {
+
+    WebFont.load({
+        google: {
+            families: ['Parisienne:400:latin-ext', 'Roboto Mono', 'Recursive']
+        }
+    });
+
     const screenWidth = screen.width;
     const certificateContainer = document.getElementById('certificateContainer');
     if(screenWidth < 720){
