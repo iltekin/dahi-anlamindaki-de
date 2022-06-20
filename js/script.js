@@ -48,6 +48,13 @@ function parseQuery(queryString) {
 }
 
 function checkShared() {
+
+    WebFont.load({
+        google: {
+            families: ['Parisienne:400:latin-ext', 'Roboto Mono', 'Recursive']
+        }
+    });
+
     let abort = false;
     let parameters = {};
     const shareParams = ["n", "d", "c", "t"];
