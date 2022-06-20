@@ -1,9 +1,11 @@
-CSS.registerProperty({
-    name: "--p",
-    syntax: "<integer>",
-    initialValue: 0,
-    inherits: true,
-});
+if(CSS){
+    CSS.registerProperty({
+        name: "--p",
+        syntax: "<integer>",
+        initialValue: 0,
+        inherits: true,
+    });
+}
 
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
