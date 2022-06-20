@@ -1,13 +1,11 @@
-function exists(CSS) {
+if(CSS.registerProperty !== undefined){
     CSS.registerProperty({
         name: "--p",
         syntax: "<integer>",
         initialValue: 0,
         inherits: true,
     });
-
     document.getElementById("certPercent").style.display = "block";
-
 }
 
 function padTo2Digits(num) {
