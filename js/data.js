@@ -12,7 +12,7 @@ const quizData = [
     },
     {
         question: "Aşağıdaki cümlelerin hangisinde yazım yanlışı yapılmıştır?",
-        a: "Siz de bizimle sinemaya gelmek isterseniz gelebilirsiniz.",
+        a: "Siz de bizimle sinemaya gelmek ister misiniz?",
         b: "Annem de bu konuda benim kararımı destekliyor.",
         c: "Ece de Esra ile aynı okula başlayacakmış.",
         d: "Televizyonunda sesini kısarsanız iyi olur.",
@@ -169,13 +169,5 @@ const quizData = [
         c: "Farkın da mısın içinde bulunduğun durumun?",
         d: "Arabada beş, evde on beş defa tekrar ettim.",
         correct: "c",
-    },
-    {
-        question: "Aşağıdaki cümlelerin hangisinde yazım yanlışı yapılmıştır?",
-        a: "doğru cevap",
-        b: "xxxxxxxxxxx",
-        c: "xxxxxxxxxxx",
-        d: "xxxxxxxxxxx",
-        correct: "a",
-    },
+    }
 ];
