@@ -271,6 +271,7 @@ function appendTotalCertificateNumber() {
     xhr.responseType = "json";
     xhr.onload = function() {
         document.getElementById("certificates").innerText = String(this.response.value);
+        document.getElementById("success_rate").style.display = "block";
     }
     xhr.send();
 }
