@@ -151,6 +151,11 @@ button {
   margin-left: 10px;
 }
 
+.other-btn-sm {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .button-container {
   zoom:3;
   display: flex;
