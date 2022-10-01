@@ -10,6 +10,7 @@ const quizData = [
         c: "Bugün okulda eğlence var.",
         d: "Pazardan sepet de almış.",
         correct: "a",
+        sender: "Sezer İltekin"
     },
     {
         question: "Aşağıdaki cümlelerin hangisinde yazım yanlışı yapılmıştır?",

@@ -316,6 +316,7 @@ const a_text = document.getElementById('a_text')
 const b_text = document.getElementById('b_text')
 const c_text = document.getElementById('c_text')
 const d_text = document.getElementById('d_text')
+const sender = document.getElementById('sender')
 const submitBtn = document.getElementById('submit')
 
 let currentQuiz = 0
@@ -332,6 +333,12 @@ function loadQuiz() {
     b_text.innerText = currentQuizData.b
     c_text.innerText = currentQuizData.c
     d_text.innerText = currentQuizData.d
+
+    if(currentQuizData.sender){
+        sender.innerText = currentQuizData.sender
+    } else {
+        sender.innerText = "";
+    }
 
     questionInfo.qNumber.innerText = (currentQuiz + +1).toString();
     questionInfo.qLimit.innerText = quizLimit.toString();
