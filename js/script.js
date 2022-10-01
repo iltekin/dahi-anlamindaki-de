@@ -335,7 +335,7 @@ function loadQuiz() {
     d_text.innerText = currentQuizData.d
 
     if(currentQuizData.sender){
-        sender.innerText = currentQuizData.sender
+        sender.innerText = "Gönderen: " + currentQuizData.sender;
     } else {
         sender.innerText = "";
     }
