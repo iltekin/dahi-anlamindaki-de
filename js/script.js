@@ -284,6 +284,7 @@ function getCertificateNumber(name) {
     xhr.onload = function() {
         let certificateNumber = String(this.response.value).padStart(8, "0");
         drawImage(name, today, certificateNumber, totalTime);
+        appendTotalCertificateNumber();
     }
     xhr.send();
 }
