@@ -102,7 +102,7 @@ window.addEventListener('load', function() {
     document.getElementById("qLimit").innerText = quizLimit.toString();
 
     checkShared();
-
+    getHitNumber();
 })
 
 const canvas = document.getElementById('canvas');
@@ -244,7 +244,24 @@ startButton.addEventListener('click', function () {
     startTime();
     counter = setInterval(timer, 1000);
     start = new Date();
+
+    getHitNumber(true);
+
 })
+
+function getHitNumber(add = false) {
+    let xhr = new XMLHttpRequest();
+    if(add){
+        xhr.open("GET", "https://api.countapi.xyz/hit/dahianlamindaki.de/hit");
+    } else {
+        xhr.open("GET", "https://api.countapi.xyz/info/dahianlamindaki.de/hit");
+    }
+    xhr.responseType = "json";
+    xhr.onload = function() {
+        document.getElementById("hits").innerText = String(this.response.value);
+    }
+    xhr.send();
+}
 
 function getCertificateNumber(name) {
     let xhr = new XMLHttpRequest();
