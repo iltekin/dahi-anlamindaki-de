@@ -136,7 +136,7 @@ function drawImage(name, date, certificateNumber, totalTime) {
 
     document.getElementById("qc").style.display = "none";
     document.getElementById("loader").style.display = "block";
-    document.getElementById("copy-btn").href = "https://dahianlamindaki.de?n=" + enco(name) + "&d=" + enco(date) + "&c=" + enco(certificateNumber.toString()) + "&t=" + enco(totalTime.toString());
+    document.getElementById("copy-btn").href = "https://" + domain + "?n=" + enco(name) + "&d=" + enco(date) + "&c=" + enco(certificateNumber.toString()) + "&t=" + enco(totalTime.toString());
 
     let keyboard = new Audio("sound/keyboard.mp3");
     keyboard.play();
@@ -151,7 +151,7 @@ function drawImage(name, date, certificateNumber, totalTime) {
 
 downloadBtn.addEventListener('click', function () {
     downloadBtn.href = canvas.toDataURL('image/jpg')
-    downloadBtn.download = 'sertifika- ' + name + '-dahianlamindaki.de.jpg';
+    downloadBtn.download = "sertifika- " + name + "-" + domain + ".jpg";
 });
 
 function clearLiHighlights(){
@@ -252,9 +252,9 @@ startButton.addEventListener('click', function () {
 function getHitNumber(add = false) {
     let xhr = new XMLHttpRequest();
     if(add){
-        xhr.open("GET", "https://api.countapi.xyz/hit/dahianlamindaki.de/hit");
+        xhr.open("GET", "https://api.countapi.xyz/hit/" + domain + "/hit");
     } else {
-        xhr.open("GET", "https://api.countapi.xyz/info/dahianlamindaki.de/hit");
+        xhr.open("GET", "https://api.countapi.xyz/info/" + domain + "/hit");
     }
     xhr.responseType = "json";
     xhr.onload = function() {
@@ -267,7 +267,7 @@ function getHitNumber(add = false) {
 
 function appendTotalCertificateNumber() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://api.countapi.xyz/info/dahianlamindaki.de");
+    xhr.open("GET", "https://api.countapi.xyz/info/" + domain);
     xhr.responseType = "json";
     xhr.onload = function() {
         document.getElementById("certificates").innerText = String(this.response.value);
@@ -279,7 +279,7 @@ function appendTotalCertificateNumber() {
 
 function getCertificateNumber(name) {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://api.countapi.xyz/hit/dahianlamindaki.de");
+    xhr.open("GET", "https://api.countapi.xyz/hit/" + domain);
     xhr.responseType = "json";
     xhr.onload = function() {
         let certificateNumber = String(this.response.value).padStart(8, "0");

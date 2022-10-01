@@ -1,3 +1,4 @@
+const domain = "dahianlamindaki.de";
 const quizLimit = 10; // default: 10
 const answerTime = 15; //default: 15
 
