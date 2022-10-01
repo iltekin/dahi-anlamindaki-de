@@ -222,7 +222,7 @@ img.logo {
   left: 50%;
   bottom: 10px;
   transform: translateX(-50%);
-  width: 80vw;
+  width: 100vw;
   font-size: 12px;
   text-align: center;
 }
