@@ -248,7 +248,7 @@ startButton.addEventListener('click', function () {
 
 function getCertificateNumber(name) {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://api.countapi.xyz/hit/dahianlamindaki.de/test");
+    xhr.open("GET", "https://api.countapi.xyz/hit/dahianlamindaki.de");
     xhr.responseType = "json";
     xhr.onload = function() {
         let certificateNumber = String(this.response.value).padStart(8, "0");
