@@ -259,9 +259,22 @@ function getHitNumber(add = false) {
     xhr.responseType = "json";
     xhr.onload = function() {
         document.getElementById("hits").innerText = String(this.response.value);
+        appendTotalCertificateNumber();
     }
     xhr.send();
 }
+
+
+function appendTotalCertificateNumber() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://api.countapi.xyz/info/dahianlamindaki.de");
+    xhr.responseType = "json";
+    xhr.onload = function() {
+        document.getElementById("certificates").innerText = String(this.response.value);
+    }
+    xhr.send();
+}
+
 
 function getCertificateNumber(name) {
     let xhr = new XMLHttpRequest();
