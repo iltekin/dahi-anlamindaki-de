@@ -419,6 +419,7 @@ li:hover {
 
   #success_rate {
     position: static;
+    margin-bottom: 10px;
   }
 
   #time div:first-child,
