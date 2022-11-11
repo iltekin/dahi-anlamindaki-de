@@ -10,7 +10,6 @@ const quizData = [
         c: "Bugün okulda eğlence var.",
         d: "Pazardan sepet de almış.",
         correct: "a",
-        sender: "Sezer İltekin"
     },
     {
         question: "Aşağıdaki cümlelerin hangisinde yazım yanlışı yapılmıştır?",
@@ -211,5 +210,14 @@ const quizData = [
         c: "Doktorlar da sağlık çalışanıdır.",
         d: "Aleyna sahnede çok güzel dans etti.",
         correct: "a",
+    },
+    {
+        question: "Aşağıdaki cümlelerin hangisinde yazım yanlışı yapılmıştır?",
+        a: "Sende mi Brütüs?",
+        b: "Kalem sende mi Brütüs?",
+        c: "Sendeleme Brütüs!",
+        d: "Sence de yanlış olmadı mı Brütüs?",
+        correct: "a",
+        sender: "geyik_akademi"
     },
 ];
