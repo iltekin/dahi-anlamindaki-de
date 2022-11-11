@@ -238,4 +238,22 @@ const quizData = [
         correct: "d",
         sender: "Anonim"
     },
+    {
+        question: "Aşağıdakilerden hangisinde yazım yanlışı yoktur?",
+        a: "Hayatta bir kumar değil mi zaten?",
+        b: "Hayatta kalırsa kesin intikamını alır.",
+        c: "Hayat da en hakiki mürşit ilimdir.",
+        d: "Hayat ta güzel ama bedeli var.",
+        correct: "b",
+        sender: "Sıtkı Sıyrıl"
+    },
+    {
+        question: "Aşağıdaki cümlelerin hangisinde yazım yanlışı yapılmıştır?",
+        a: "Ben de özledim ben de. Resmin var şu an elimde.",
+        b: "Ben suyumu kazandım da içtim.",
+        c: "Yıllar ikimizden de çok şeyler götürmüş.",
+        d: "Dahi anlamındaki de sitesinin adminide çok yakışıklı.",
+        correct: "d",
+        sender: "Yaşar Emre Doğru"
+    },
 ];
