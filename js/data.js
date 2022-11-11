@@ -220,4 +220,13 @@ const quizData = [
         correct: "a",
         sender: "geyik_akademi"
     },
+    {
+        question: "Aşağıdakilerden hangisinde yazım yanlışı yoktur?",
+        a: "Ölülerde sanıyor ki diriler her gün helva yiyor.",
+        b: "Evlenipte ne yapacaksın?",
+        c: "Düğün için de 200000 kredi çektim.",
+        d: "Boşanınca çocuğumu hiç te göremedim.",
+        correct: "c",
+        sender: "Adzo"
+    },
 ];
