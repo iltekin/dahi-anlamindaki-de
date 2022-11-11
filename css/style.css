@@ -20,6 +20,12 @@ body {
   margin: 0;
 }
 
+#success_rate {
+  right: 3vw;
+  bottom: 0;
+  position: absolute;
+}
+
 audio {
   display: none;
 }
@@ -409,6 +415,10 @@ li:hover {
 
   #timeLeft {
     font-size: 30px;
+  }
+
+  #success_rate {
+    position: static;
   }
 
   #time div:first-child,
