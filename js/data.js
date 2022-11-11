@@ -2,6 +2,8 @@ const domain = "dahianlamindaki.de";
 const quizLimit = 10; // default: 10
 const answerTime = 15; //default: 15
 
+// Evet cevaplar görünüyor çünkü ben görünmesini tercih ettim. Teşekkür ederim.
+
 const quizData = [
     {
         question: "Aşağıdaki cümlelerin hangisinde yazım yanlışı yapılmıştır?",
