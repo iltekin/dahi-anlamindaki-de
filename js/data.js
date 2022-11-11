@@ -229,4 +229,13 @@ const quizData = [
         correct: "c",
         sender: "Adzo"
     },
+    {
+        question: "Aşağıdakilerden hangisinde yazım yanlışı yoktur?",
+        a: "Albayımda sabahları napalm kokusuna bayılır.",
+        b: "Vals albayımında uzmanlık alanıdır.",
+        c: "Albaylarında kalbi kırılabilir.",
+        d: "Şimdi sana da albayına da başlayacağım!",
+        correct: "d",
+        sender: "Anonim"
+    },
 ];
