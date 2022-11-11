@@ -23,7 +23,7 @@ const quizData = [
     {
         question: "Aşağıdaki cümlelerin hangisinde yazım yanlışı yapılmıştır?",
         a: "Sevgide sınır olmaz.",
-        b: "Bu işi annemde biliyor.",
+        b: "Sadece babam değil, annemde biliyor.",
         c: "Babam fabrikada çalışıyor.",
         d: "Bugün okulda eğlence vardı.",
         correct: "b",
