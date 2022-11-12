@@ -273,7 +273,7 @@ function appendTotalCertificateNumber(hitNumber) {
         document.getElementById("certificates").innerText = String(this.response.value);
 
         let percentage = (100 * this.response.value) / hitNumber;
-        document.getElementById("success_percent").innerText = String(percentage.toFixed(2));
+        document.getElementById("success_percent").innerText = "%" + String(Math.floor(percentage));
         document.getElementById("success_rate").style.display = "block";
     }
     xhr.send();
