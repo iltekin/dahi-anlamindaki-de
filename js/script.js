@@ -259,18 +259,21 @@ function getHitNumber(add = false) {
     xhr.responseType = "json";
     xhr.onload = function() {
         document.getElementById("hits").innerText = String(this.response.value);
-        appendTotalCertificateNumber();
+        appendTotalCertificateNumber(this.response.value);
     }
     xhr.send();
 }
 
 
-function appendTotalCertificateNumber() {
+function appendTotalCertificateNumber(hitNumber) {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "https://api.countapi.xyz/info/" + domain);
     xhr.responseType = "json";
     xhr.onload = function() {
         document.getElementById("certificates").innerText = String(this.response.value);
+
+        let percentage = (100 * this.response.value) / hitNumber;
+        document.getElementById("success_percent").innerText = String(percentage.toFixed(2));
         document.getElementById("success_rate").style.display = "block";
     }
     xhr.send();
@@ -284,7 +287,7 @@ function getCertificateNumber(name) {
     xhr.onload = function() {
         let certificateNumber = String(this.response.value).padStart(8, "0");
         drawImage(name, today, certificateNumber, totalTime);
-        appendTotalCertificateNumber();
+        appendTotalCertificateNumber(this.response.value);
     }
     xhr.send();
 }
