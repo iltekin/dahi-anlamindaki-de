@@ -26,6 +26,11 @@ body {
   position: absolute;
 }
 
+.kahve_ismarla {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
 audio {
   display: none;
 }
@@ -420,6 +425,19 @@ li:hover {
   #success_rate {
     position: static;
     margin-bottom: 10px;
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  .kahve_ismarla {
+    margin:0;
+  }
+
+  .kahve_ismarla img {
+    width: 100%;
+    margin-top: 20px;
   }
 
   #time div:first-child,
