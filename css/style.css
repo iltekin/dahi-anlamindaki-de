@@ -168,7 +168,6 @@ button {
 }
 
 .button-container {
-  zoom:3;
   display: flex;
 }
 
@@ -257,6 +256,15 @@ li:hover {
   display: none;
 }
 
+#certificateImageContainer {
+  width: 700px;
+  max-width: 90%;
+}
+
+#certificateImageContainer img {
+  width: 100%;
+}
+
 .progressbar {
   width: 100%;
 }
@@ -316,6 +324,15 @@ li:hover {
   right: 0;
   top: 0;
   cursor: pointer;
+}
+
+#download-notice {
+  display: none;
+  margin: 20px 10px;
+  padding: 10px;
+  line-height: 1.2;
+  background: rgb(232 194 88 / 25%);
+  border-radius: 10px;
 }
 
 .hideThis {
@@ -432,12 +449,12 @@ li:hover {
   }
 
   .kahve_ismarla {
-    margin:0;
+    margin-top: 0;
+    max-width: 50%;
   }
 
   .kahve_ismarla img {
     width: 100%;
-    margin-top: 20px;
   }
 
   #time div:first-child,
@@ -446,7 +463,11 @@ li:hover {
   }
 
   #download-btn {
-    zoom: 2;
+    display: none;
+  }
+
+  #download-notice {
+    display: flex;
   }
 
   img.logo {

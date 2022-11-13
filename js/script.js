@@ -26,63 +26,6 @@ function toNameCase(str) {
         .join(' ');
 }
 
-function enco(str){
-    return CryptoJS.AES.encrypt(str, "not-a-secret").toString();
-}
-
-function deco(encrypted){
-    var decrypted = CryptoJS.AES.decrypt(encrypted, "not-a-secret");
-    return decrypted.toString(CryptoJS.enc.Utf8);
-}
-
-let shared = false;
-
-function parseQuery(queryString) {
-    var query = {};
-    var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
-    for (var i = 0; i < pairs.length; i++) {
-        var pair = pairs[i].split('=');
-        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
-    }
-    return query;
-}
-
-function checkShared() {
-
-    WebFont.load({
-        google: {
-            families: ['Parisienne:400:latin-ext', 'Roboto Mono', 'Recursive']
-        }
-    });
-
-    let abort = false;
-    let parameters = {};
-    const shareParams = ["n", "d", "c", "t"];
-
-    const queryString = window.location.search;
-
-    if(queryString.length > 0) {
-        const urlParams = parseQuery(queryString);
-        for (const param of shareParams) {
-            if (!urlParams[param] || deco(urlParams[param]).length === 0) {
-                abort = true;
-                console.log("Aborted: " + urlParams[param]);
-            } else {
-                parameters[param] = deco(urlParams[param]);
-            }
-        }
-    } else {
-        abort = true;
-    }
-
-    if(!abort) {
-        drawImage(parameters["n"], parameters["d"], parameters["c"], parameters["t"]);
-        shared = true;
-    }
-
-
-}
-
 window.addEventListener('load', function() {
 
     WebFont.load({
@@ -101,13 +44,12 @@ window.addEventListener('load', function() {
     document.getElementById("timeLeft").innerText = totalAnswerTime;
     document.getElementById("qLimit").innerText = quizLimit.toString();
 
-    checkShared();
     getHitNumber();
 })
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-let name = "";
+let testerName = "";
 let start = "";
 let totalTime = "";
 const today = formatDate(new Date());
@@ -136,22 +78,24 @@ function drawImage(name, date, certificateNumber, totalTime) {
 
     document.getElementById("qc").style.display = "none";
     document.getElementById("loader").style.display = "block";
-    document.getElementById("copy-btn").href = "https://" + domain + "?n=" + enco(name) + "&d=" + enco(date) + "&c=" + enco(certificateNumber.toString()) + "&t=" + enco(totalTime.toString());
 
     let keyboard = new Audio("sound/keyboard.mp3");
     keyboard.play();
 
     setTimeout(function() {
+
+        document.getElementById("sertifika_img").src = canvas.toDataURL('image/jpg');
+
         document.getElementById("loader").style.display = "none";
-        document.getElementById("certificateContainer").style.display = "block";
+        document.getElementById("certificateImageContainer").style.display = "block";
         let created = new Audio("sound/created.mp3");
         created.play();
     }, 10000);
 }
 
 downloadBtn.addEventListener('click', function () {
-    downloadBtn.href = canvas.toDataURL('image/jpg')
-    downloadBtn.download = "sertifika- " + name + "-" + domain + ".jpg";
+    downloadBtn.href = canvas.toDataURL('image/jpg');
+    downloadBtn.download = "sertifika-" + testerName + "-" + domain + ".jpg";
 });
 
 function clearLiHighlights(){
@@ -380,6 +324,7 @@ function playNow(sound) {
 function getName() {
     let nameInput = document.getElementById("name");
     let nameValue = nameInput.value;
+    testerName = nameInput.value;
 
     if(nameValue === "" || nameValue === undefined){
         nameInput.placeholder = "Buraya adınızı yazmalısınız";
