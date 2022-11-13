@@ -8,6 +8,10 @@ if(CSS.registerProperty !== undefined){
     document.getElementById("certPercent").style.display = "block";
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
 }
@@ -208,7 +212,7 @@ function getHitNumber(add = false) {
     }
     xhr.responseType = "json";
     xhr.onload = function() {
-        document.getElementById("hits").innerText = String(this.response.value);
+        document.getElementById("hits").innerText = String(numberWithCommas(this.response.value));
         appendTotalCertificateNumber(this.response.value);
     }
     xhr.send();
@@ -220,7 +224,7 @@ function appendTotalCertificateNumber(hitNumber) {
     xhr.open("GET", "https://api.countapi.xyz/info/" + domain);
     xhr.responseType = "json";
     xhr.onload = function() {
-        document.getElementById("certificates").innerText = String(this.response.value);
+        document.getElementById("certificates").innerText = String(numberWithCommas(this.response.value));
 
         let percentage = (100 * this.response.value) / hitNumber;
         document.getElementById("success_percent").innerText = "%" + String(Math.floor(percentage));
