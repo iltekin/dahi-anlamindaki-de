@@ -21,9 +21,15 @@ function formatDate(date) {
 }
 
 function toNameCase(str) {
-    return str.split(' ')
-        .map(w => w[0].toLocaleUpperCase('tr-TR') + w.substring(1).toLocaleLowerCase('tr-TR'))
-        .join(' ');
+
+    try {
+        return str.split(' ')
+            .map(w => w[0].toLocaleUpperCase('tr-TR') + w.substring(1).toLocaleLowerCase('tr-TR'))
+            .join(' ');
+    } catch (e) {
+        return str
+    }
+
 }
 
 window.addEventListener('load', function() {
@@ -60,13 +66,13 @@ image.src = 'image/certificate.jpg';
 
 function drawImage(name, date, certificateNumber, totalTime) {
 
-    name = toNameCase(name);
+    theName = toNameCase(name);
 
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
     ctx.font = '150px Parisienne';
     ctx.fillStyle = '#001439';
     ctx.textAlign = "center";
-    ctx.fillText(name, 950, 930);
+    ctx.fillText(theName, 950, 930);
 
     ctx.font = '40px Roboto Mono';
     ctx.fillText(date, 350, 1200);
@@ -231,7 +237,7 @@ function getCertificateNumber(name) {
     xhr.onload = function() {
         let certificateNumber = String(this.response.value).padStart(8, "0");
         drawImage(name, today, certificateNumber, totalTime);
-        appendTotalCertificateNumber(this.response.value);
+        getHitNumber();
     }
     xhr.send();
 }
