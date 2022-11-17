@@ -2,6 +2,7 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const canvas2 = document.getElementById('canvas2');
 const ctx2 = canvas2.getContext('2d');
+const screenWidth = screen.width;
 let testerName = "";
 let start = "";
 let totalTime = "";
@@ -62,7 +63,6 @@ window.addEventListener('load', function() {
         }
     });
 
-    const screenWidth = screen.width;
     const certificateContainer = document.getElementById('certificateContainer');
     if(screenWidth < 720){
         certificateContainer.style.zoom = screenWidth / 1920 / 1.13;
@@ -154,6 +154,10 @@ function drawSponsorImage(name, date, certificateNumber, onlySponsor = false) {
             
     if(onlySponsor){
         document.getElementById("creating-certificates-message").textContent = "SERTİFİKA OLUŞTURULUYOR...";
+        const mainContainer = document.getElementById('main_container');
+        if(screenWidth > 720){
+            mainContainer.style.paddingTop = "5vw";
+        }
     }
 
     setTimeout(function() {
