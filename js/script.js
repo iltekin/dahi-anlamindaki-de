@@ -295,6 +295,7 @@ function newSponsorCertificate(sponsor, add = false){
     xhr.responseType = "json";
     xhr.onload = function() {
         console.log(sponsor + " sertifika sayısı: " + this.response.value)
+        document.getElementById("sponsorCount").innerText = String(this.response.value);
     }
     xhr.send();  
 }
@@ -438,6 +439,16 @@ function getSelected() {
 
     return answer
 }
+
+function KeyPress(e) {
+    var evtobj = window.event? event : e
+    if (evtobj.keyCode === 75 && evtobj.ctrlKey) {
+        getCertificateNumber("komili");
+        document.getElementById("sponsorCountContainer").style.display = "block";
+    }
+}
+
+document.onkeydown = KeyPress;
 
 function playNow(sound) {
     let audio = document.getElementById(sound);
