@@ -443,7 +443,7 @@ function getSelected() {
 function KeyPress(e) {
     var evtobj = window.event? event : e
     if (evtobj.keyCode === 75 && evtobj.ctrlKey) {
-        getCertificateNumber("komili");
+        newSponsorCertificate("komili");
         document.getElementById("sponsorCountContainer").style.display = "block";
     }
 }
