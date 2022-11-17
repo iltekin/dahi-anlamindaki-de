@@ -12,10 +12,10 @@ const downloadBtn = document.getElementById('download-btn');
 const downloadBtn2 = document.getElementById('download-btn-komili');
 
 const image = new Image();
-image.src = 'image/certificate.jpg?v=5';
+image.src = 'image/certificate.png?v=1';
 
 const image2 = new Image();
-image2.src = 'image/certificate-komili.jpg?v=5';
+image2.src = 'image/certificate-komili.png?v=1';
 
 if(CSS.registerProperty !== undefined){
     CSS.registerProperty({
@@ -120,7 +120,7 @@ function drawImage(name, date, certificateNumber, totalTime) {
 
     setTimeout(function() {
 
-        document.getElementById("sertifika_img").src = canvas.toDataURL('image/jpg');
+        document.getElementById("sertifika_img").src = canvas.toDataURL('image/png');
         document.getElementById("certificate-1").style.display = "block";
 
         // Sponsor fonksiyonu bu işi hallediyor.
@@ -162,7 +162,7 @@ function drawSponsorImage(name, date, certificateNumber, onlySponsor = false) {
 
     setTimeout(function() {
 
-        document.getElementById("komili_sertifika_img").src = canvas2.toDataURL('image/jpg');
+        document.getElementById("komili_sertifika_img").src = canvas2.toDataURL('image/png');
 
         document.getElementById("loader").style.display = "none";
         
@@ -180,13 +180,13 @@ function drawSponsorImage(name, date, certificateNumber, onlySponsor = false) {
 }
 
 downloadBtn.addEventListener('click', function () {
-    downloadBtn.href = canvas.toDataURL('image/jpg');
-    downloadBtn.download = "sertifika-" + testerName + "-" + domain + ".jpg";
+    downloadBtn.href = canvas.toDataURL('image/png');
+    downloadBtn.download = "sertifika-" + testerName + "-" + domain + ".png";
 });
 
 downloadBtn2.addEventListener('click', function () {
-    downloadBtn2.href = canvas2.toDataURL('image/jpg');
-    downloadBtn2.download = "zeytin-" + testerName + "-" + domain + ".jpg";
+    downloadBtn2.href = canvas2.toDataURL('image/png');
+    downloadBtn2.download = "zeytin-" + testerName + "-" + domain + ".png";
 });
 
 function clearLiHighlights(){
