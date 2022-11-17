@@ -16,14 +16,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   min-height: 100vh;
   margin: 0;
 }
 
 #success_rate {
   right: 3vw;
-  bottom: 0;
+  bottom: 1vw;
   position: absolute;
+}
+
+#bilgilendirme {
+    background: cornsilk;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid #eee4c5;
 }
 
 .kahve_ismarla {
@@ -43,6 +52,7 @@ audio {
   overflow: hidden;
   max-width: 90%;
   line-height: 1.6;
+  align-self: center;
 }
 
 #quiz {
@@ -62,11 +72,36 @@ audio {
 }
 
 .blue-gradient {
-  background: #097f97 linear-gradient(90deg, #1a6271, #097f97);
+    background: #03376d linear-gradient(90deg, #03376d, #097f97);
 }
 
 .blue-gradient:hover {
-  background: #097f97 linear-gradient(90deg, #1a6271, #1a6271, #097f97);
+    background: #001b42 linear-gradient(90deg, #03376d, #2569b0, #097f97);
+}
+
+.green-gradient {
+  background: #28512C linear-gradient(90deg, #317335, #28512C);
+}
+
+.green-gradient:hover {
+  background: #28512C linear-gradient(90deg, #317335, #3D6119, #28512C);
+}
+
+.try-again-button {
+    background: #d1c305 linear-gradient(90deg, #d1c305, #b08423);
+}
+
+.try-again-button:hover {
+    background: #d1c305 linear-gradient(90deg, #d1c305, #b0a823, #b08423);
+}
+
+.m-download {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.failed-buttons-container {
+    display: flex;
 }
 
 #result {
@@ -98,8 +133,8 @@ h2 {
   text-align: center;
   margin: 0;
   font-size: 20px;
-  color: #1b6371;
-  text-shadow: 2px 1px 10px #b8c6db;
+  color: #1B452B;
+  text-shadow: 2px 1px 10px #c8c7cc;
 }
 
 ul {
@@ -140,8 +175,16 @@ button {
   text-decoration: none;
 }
 
+#prefix {
+    padding: 0 2rem;
+    width: 100%;
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
 .other-btn,
-#download-btn {
+#download-btn,
+#download-btn-komili {
   margin-top: 10px;
   border-radius: 10px;
   color: #fff;
@@ -155,6 +198,7 @@ button {
   text-align: center;
   text-decoration: none;
   flex-grow: 1;
+  box-shadow: #c8c7cc 1px 1px 6px 3px;
 }
 
 .other-btn {
@@ -175,7 +219,7 @@ img.logo {
   position: absolute;
   top: 3vw;
   left: 3vw;
-  width: 15vw;
+  width: 10vw;
 }
 
 #questionInfo {
@@ -228,13 +272,11 @@ img.logo {
 }
 
 #footer {
-  position: absolute;
-  left: 50%;
-  bottom: 10px;
-  transform: translateX(-50%);
   width: 100vw;
   font-size: 12px;
   text-align: center;
+  margin-top: auto;
+  padding-bottom: 5px;
 }
 
 #footer img {
@@ -243,12 +285,47 @@ img.logo {
 
 .selectedAnswer,
 li:hover {
-  background-color: #ebf4f6;
+  background-color: rgb(49 115 53 / 25%);
 }
 
 #result h2,
 #welcome-message h2 {
   padding-bottom: 0;
+}
+
+#sponsor {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#sponsor a {
+    text-decoration: none;
+    padding-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color: #40403f;
+}
+
+#sponsor img {
+    padding-top: 4px;
+    overflow: hidden;
+    margin-right: 5px;
+    height: 20px;
+    width: auto;
+}
+
+#main_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    justify-content: center;
+    padding-top: 10vw;
+    padding-bottom: 50px;
 }
 
 #certificateContainer {
@@ -257,12 +334,34 @@ li:hover {
 }
 
 #certificateImageContainer {
-  width: 700px;
-  max-width: 90%;
+  width: 100%;
+  justify-content: center;
 }
 
-#certificateImageContainer img {
+#certificateImages img {
   width: 100%;
+  box-shadow: #c8c7cc 1px 1px 7px 7px;
+  border-radius: 10px;
+}
+
+#certificateImageContainerInner {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    max-width: 90%;
+}
+
+#certificateImages {
+    display: flex;
+}
+
+.certificate {
+    margin: 0 10px;
+}
+
+.failed-screen-double-button {
+    width: 50%;
+    display: inline-block;
 }
 
 .progressbar {
@@ -286,11 +385,11 @@ li:hover {
 @keyframes progressbar-countdown {
   0% {
     width: 100%;
-    background: #1a6271;
+    background: #317335;
   }
   100% {
     width: 0%;
-    background: #097f97;
+    background: #28512C;
   }
 }
 
@@ -335,13 +434,40 @@ li:hover {
   border-radius: 10px;
 }
 
+
+#email-notice {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    padding: 10px;
+    line-height: 1.2;
+    background: rgb(255 255 255 / 50%);
+    border-radius: 10px;
+    margin-top: 50px;
+    font-size: 12px;
+}
+
+    
+.noticeIcon {
+    width: 12px;
+    margin-right: 15px;
+    align-self: baseline;
+}
+
+.noticeIcon img {
+    width: 100%;
+}
+
 .hideThis {
   display: none;
 }
 
 #loader {
-  display: none;
-  position: relative;
+    display: none;
+    position: relative;
+    width: 420px;
+    max-width: 90%;
+    align-self: center;
 }
 
 .certProgress {
@@ -357,7 +483,7 @@ li:hover {
 }
 
 .certProgress-moved .certProgressBar {
-  background-color: #106b00;
+  background-color: #1b452b;
   animation: certProgress 10s infinite;
 }
 
@@ -400,12 +526,6 @@ li:hover {
 
 @media screen and (max-width: 921px) {
 
-  body {
-    align-items: start;
-    padding-top: 40vw;
-    padding-bottom: 12vw;
-  }
-
   h2 {
     font-size: 15px;
     padding: 1rem;
@@ -419,6 +539,29 @@ li:hover {
   .quiz-container {
     z-index: 2;
   }
+  
+    #main_container {
+        justify-content: start;
+        padding-top: 40vw;
+    }
+    
+    #email-notice {
+        margin-top: 0;
+        background: rgb(203 221 215);
+        font-size: initial;
+    }
+    
+    .noticeIcon {
+        width: 25%!important;
+    }
+
+    #certificateImages {
+        flex-direction: column-reverse;
+    }
+        
+    #certificateImages > div {
+        margin-bottom:15px;
+    }
 
   #questionInfo {
     top: 3vw;
@@ -462,7 +605,8 @@ li:hover {
     display: none;
   }
 
-  #download-btn {
+  #download-btn,
+  #download-btn-komili {
     display: none;
   }
 
@@ -474,7 +618,7 @@ li:hover {
     position: absolute;
     top: 3vw;
     left: 50%;
-    height: 30vw;
+    height: 22vw;
     width: auto;
     transform: translateX(-50%);
   }
