@@ -66,7 +66,7 @@ const quizData = [
         a: "Zeytin ağacı kalıntılarına 12 bin yıl öncesinde de rastlanır.",
         b: "Zeytin ağaçları, ekolojik sistemde çok önemlidir.",
         c: "Morfogenetik yenilenme sayesin de zeytin ağacı uzun yaşar.",
-        d: "Zeytin ağacları hem yazın hem de kışın yeşilliğini korur.",
+        d: "Zeytin ağaçları hem yazın hem de kışın yeşilliğini korur.",
         correct: "c",
     },
     {
