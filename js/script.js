@@ -444,7 +444,7 @@ function KeyPress(e) {
     var evtobj = window.event? event : e
     if (evtobj.keyCode === 75 && evtobj.ctrlKey) {
         newSponsorCertificate("komili");
-        document.getElementById("sponsorCountContainer").style.display = "block";
+        document.getElementById("sponsorCountContainer").style.display = "inline-block";
     }
 }
 
