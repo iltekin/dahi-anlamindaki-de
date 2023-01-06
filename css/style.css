@@ -386,11 +386,11 @@ li:hover {
 @keyframes progressbar-countdown {
   0% {
     width: 100%;
-    background: #317335;
+    background: #097f97;
   }
   100% {
     width: 0%;
-    background: #28512C;
+    background: #03376d;
   }
 }
 

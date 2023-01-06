@@ -1,5 +1,5 @@
 const domain = "dahianlamindaki.de";
-const quizLimit = 1; // default: 10
+const quizLimit = 10; // default: 10
 const answerTime = 15; //default: 15
 
 // Evet cevaplar görünüyor çünkü ben görünmesini tercih ettim. Teşekkür ederim.
