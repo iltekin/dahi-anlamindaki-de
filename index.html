@@ -1,24 +1,33 @@
-<!-- iltekin.com -->
+<!-- 
+
+dahianlamindaki.de 
+Türkçenin doğru kullanımı konusunda farkındalık yaratmak amacıyla 
+Sezer İltekin tarafından üretilmiş bir yazılımdır. 
+
+İletişim için
+sezer@iltekin.com
+
+-->
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="css/style.css?v=3.3"/>
+    <link rel="stylesheet" href="css/style.css?v=5.8"/>
     <link rel="icon" href="favicon.png"/>
 
     <!-- Primary Meta Tags -->
     <title>Dahi Anlamındaki De</title>
     <meta name="title" content="Dahi Anlamındaki De">
     <meta name="description" content="10 sorunun tamamına 150 saniye içinde doğru cevap vererek \"Dahi Anlamındaki De Sertifikası\" kazanabileceğiniz web sitesi.">
-
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dahianlamindaki.de/">
     <meta property="og:title" content="Dahi Anlamındaki De">
     <meta property="og:description" content="10 sorunun tamamına 150 saniye içinde doğru cevap vererek \"Dahi Anlamındaki De Sertifikası\" kazanabileceğiniz web sitesi.">
     <meta property="og:image" content="https://dahianlamindaki.de/image/meta.png">
-
+    
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://dahianlamindaki.de/">
@@ -51,23 +60,22 @@
     <div id="menuContents" class="hideThis">
         <h2>Nedir?</h2>
         <div class="menu-inner">
-            dahianlamindaki.de <a href="https://twitter.com/sezeriltekin" target="_blank">@sezeriltekin</a> tarafından tamamen eğlence amaçlı oluşturulmuş açık kaynak kodlu bir web sitesidir.
+            <a href="https://twitter.com/sezeriltekin" target="_blank">Sezer İltekin</a> tarafından Türkçenin doğru kullanımı konusunda farkındalık yaratmak amacıyla oluşturulmuş açık kaynak kodlu bir web sitesidir.
             Her Türk’ün ana dilini doğru kullanabilmesi gerektiğine dikkat çekmek istiyoruz.
             <br/>
             <br/>
             <small>
-                <strong>Not: </strong>
-                Bu sitede hiçbir bilginiz kaydedilmez, bütün işlem cihazınızda gerçekleşmektedir. Bir sertifika kazanırsanız bu sertifika sadece cihazınızda saklanır.
+                <small>Bilgilendirme </small><br/>
+                <div id="bilgilendirme">
+                    Bu sitede size ait hiçbir bilgi kaydedilmez. Sertifikalar direkt olarak kullandığınız cihazda üretilmekte ve herhangi bir yerde saklanmamaktadır.
+                </div>
             </small>
-            <br/>
-            <br/>
             <a class="other-btn other-btn-sm blue-gradient" href="https://forms.gle/tpEAsCi6GhKdQ9ya7" target="_blank">Soru Gönder</a>
-            <a target="_blank" href="https://www.buymeacoffee.com/dahianlaminda"><img style="margin-top: 10px; margin-left: 10px; max-width: 96%;" src="https://img.buymeacoffee.com/button-api/?text=Bir Kahve Ismarla&emoji=&slug=dahianlaminda&button_colour=FEDD12&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff" /></a>
         </div>
     </div>
 </div>
 
-<img class="logo" src="image/logo.png" alt="dahi anlamındaki de">
+<a title="Dahi Anlamındaki De" href="https://dahianlamindaki.de"><img class="logo" src="image/logo.png" alt="dahi anlamındaki de"></a>
 
 <div id="questionInfo">
     <div>SORU</div>
@@ -79,87 +87,118 @@
     <div><span id="timeLeft">0</span></div>
 </div>
 
-<div id="certificateContainer">
-    <div style="width:1920px; height:1376px">
-        <canvas id="canvas" height="1376px" width="1920px"></canvas>
+<div id="main_container">
+    
+    <div id="sponsor" style="display:none">
+        <a href="https://www.komilizeytinyagi.com.tr" target="_blank">
+            <img class="sponsorSmallImage" width="60px" src="image/komili_logo.png"> |&nbsp;&nbsp;SPONSORLUĞUNDA
+        </a>
     </div>
-</div>
 
-<div id="certificateImageContainer" style="display:none;">
-    <img id="sertifika_img" src="" alt="sertifika">
-    <div class="row my-2">
-        <div class="button-container">
-            <div id="download-notice">
-                <div style="width: 25%;margin-right: 10px;">
-                    <img style="" src="image/touch.png">
-                </div>
-                <div>
-                    Sertifikanızı, üzerine basılı tutarak açılacak menüden galerinize kaydedebilirsiniz.
+    <div id="qc" class="quiz-container">
+        
+        <div id="quiz-progress">
+            <div id="progress-bar" class="blue-gradient"></div>
+        </div>
+    
+        <div class="quiz-inner" id="welcome-message">
+            <div class="quiz-header">
+                <h2>Hazırsanız başlayalım!</h2>
+                <div class="welcome-inner">
+                    10 soruya 150 saniyede doğru cevap verebilirseniz “Dahi Anlamındaki De Sertifikası” kazanacaksınız.
                 </div>
             </div>
-            <a href="#" class="blue-gradient" id="download-btn">Sertifikamı İndir</a>
-            <a target="_blank" class="kahve_ismarla" href="https://www.buymeacoffee.com/dahianlaminda"><img src="https://img.buymeacoffee.com/button-api/?text=Bir Kahve Ismarla&emoji=&slug=dahianlaminda&button_colour=FEDD12&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff" /></a>
+            <button id="start" class="blue-gradient">Başla →</button>
+        </div>
+    
+        <div class="quiz-inner" id="quiz">
+            <div class="quiz-header">
+                <h2 id="question">Question text</h2>
+                <p id="prefix"></p>
+                <ul>
+                    <li>
+                        <input type="radio" name="answer" id="a" class="answer">
+                        <label for="a" id="a_text">Question</label>
+                    </li>
+    
+                    <li>
+                        <input type="radio" name="answer" id="b" class="answer">
+                        <label for="b" id="b_text">Question</label>
+                    </li>
+    
+                    <li>
+                        <input type="radio" name="answer" id="c" class="answer">
+                        <label for="c" id="c_text">Question</label>
+                    </li>
+    
+                    <li>
+                        <input type="radio" name="answer" id="d" class="answer">
+                        <label for="d" id="d_text">Question</label>
+                    </li>
+                </ul>
+                <div id="sender" style="text-align: right; font-size: 11px; transform: translate(-20px, -50%);"></div>
+            </div>
+            <button id="submit" class="blue-gradient" style="width: 100%;">Cevapla →</button>
         </div>
     </div>
-</div>
-
-<div id="qc" class="quiz-container">
-    <div id="quiz-progress">
-        <div id="progress-bar" class="blue-gradient"></div>
+    
+    <div id="loader">
+        <div class="certProgress certProgress-moved">
+            <div class="certProgressBar"></div>
+            <div id="certPercent" class="certProgressLoader" style="--n: 1; --f: 0;"></div>
+        </div>
+        <h2 id="creating-certificates-message">SERTİFİKALAR OLUŞTURULUYOR...</h2>
     </div>
-
-    <div class="quiz-inner" id="welcome-message">
-        <div class="quiz-header">
-            <h2>Hazırsanız başlayalım!</h2>
-            <div class="welcome-inner">
-                Bu sayfada sizi küçük bir test bekliyor.<br/>
-                10 soruya 150 saniye içinde doğru cevap verebilirseniz "Dahi Anlamındaki De Sertifikası" kazanacaksınız.
+    
+    <div id="certificateContainer">
+        <div style="width:1920px; height:1380px">
+            <canvas id="canvas" width="1920px" height="1380px"></canvas>
+        </div>
+        <div style="width:1920px; height:1380px">
+            <canvas id="canvas2" width="1920px" height="1380px"></canvas>
+        </div>
+    </div>
+    
+    <div id="certificateImageContainer" style="display:none;">
+        <div id="certificateImageContainerInner">
+            <div id="certificateImages">
+                <div class="certificate" id="certificate-1" style="display:none;">
+                    <img id="sertifika_img" src="" alt="sertifika">
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="button-container">
+                    <a href="#" class="blue-gradient m-download" id="download-btn">Sertifikayı İndir</a>
+                    <a href="#" class="green-gradient m-download" id="download-btn-komili" style="display: none">Sertifikayı İndir</a>
+                    
+                        <div id="download-notice">
+                            <div class="noticeIcon">
+                                <img src="image/touch.png">
+                            </div>
+                            <div>
+                                Sertifikanızı, üzerine basılı tutarak açılacak menüden galerinize kaydedebilirsiniz.
+                            </div>
+                        </div>
+                    
+                </div>
+                
+                <div id="email-notice">
+                    <div class="noticeIcon">
+                        <img src="image/email.png">
+                    </div>
+                    <div>
+                        Bir sonraki projeden haberdar olmak isterseniz <a href="https://eepurl.com/idVc9j" target="_blank">E-posta listemize</a> katılabilirsiniz.
+                    </div>
+                </div>
+                
             </div>
         </div>
-        <button id="start" class="blue-gradient">Başla →</button>
     </div>
-
-    <div class="quiz-inner" id="quiz">
-        <div class="quiz-header">
-            <h2 id="question">Question text</h2>
-            <ul>
-                <li>
-                    <input type="radio" name="answer" id="a" class="answer">
-                    <label for="a" id="a_text">Question</label>
-                </li>
-
-                <li>
-                    <input type="radio" name="answer" id="b" class="answer">
-                    <label for="b" id="b_text">Question</label>
-                </li>
-
-                <li>
-                    <input type="radio" name="answer" id="c" class="answer">
-                    <label for="c" id="c_text">Question</label>
-                </li>
-
-                <li>
-                    <input type="radio" name="answer" id="d" class="answer">
-                    <label for="d" id="d_text">Question</label>
-                </li>
-            </ul>
-            <div id="sender" style="text-align: right; font-size: 11px; transform: translate(-20px, -50%);"></div>
-        </div>
-        <button id="submit" class="blue-gradient" style="width: 100%;">Cevapla →</button>
-    </div>
-</div>
-
-<div id="loader">
-    <div class="certProgress certProgress-moved">
-        <div class="certProgressBar"></div>
-        <div id="certPercent" class="certProgressLoader" style="--n: 1; --f: 0;"></div>
-    </div>
-    <h2 style="color:#000000;">SERTİFİKA OLUŞTURULUYOR...</h2>
 </div>
 
 <div id="footer">
     <div id="success_rate" style="display:none;">
-        <span title="Teste Katılan Kişi Sayısı" id="hits">0</span> 🙍🏻‍♂ / ️<span title="Başarılı Kişi Sayısı" id="certificates">0</span> 🏆 <span title="Başarılı Kişi Oranı" id="success_percent">%0</span>
+        <span title="Teste Katılan Kişi Sayısı" id="hits">0</span> 🙍🏻‍♂ / ️<span title="Başarılı Kişi Sayısı" id="certificates">0</span> 🏆 <span title="Başarılı Kişi Oranı" id="success_percent">%0</span> <span id="sponsorCountContainer" style="display: none"> 🫒<span id="sponsorCount"></span></span>
     </div>
     <a href="https://iltekin.com/projects/dahi-anlamindaki-de/" target="_blank">
         <img src="image/iltekin.svg" alt="iltekin brainworks">
@@ -183,7 +222,7 @@
 </audio>
 
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-<script src="js/data.js?v=3.3"></script>
-<script src="js/script.js?v=3.3"></script>
+<script src="js/data.js?v=5.8"></script>
+<script src="js/script.js?v=5.8"></script>
 </body>
 </html>

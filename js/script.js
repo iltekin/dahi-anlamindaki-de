@@ -1,3 +1,22 @@
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const canvas2 = document.getElementById('canvas2');
+const ctx2 = canvas2.getContext('2d');
+const screenWidth = screen.width;
+let testerName = "";
+let start = "";
+let totalTime = "";
+let tried = localStorage.getItem('tried') || 1;
+const today = formatDate(new Date());
+const downloadBtn = document.getElementById('download-btn');
+const downloadBtn2 = document.getElementById('download-btn-komili');
+
+const image = new Image();
+image.src = 'image/certificate.png?v=1';
+
+const image2 = new Image();
+image2.src = 'image/certificate-komili.png?v=1';
+
 if(CSS.registerProperty !== undefined){
     CSS.registerProperty({
         name: "--p",
@@ -44,7 +63,6 @@ window.addEventListener('load', function() {
         }
     });
 
-    const screenWidth = screen.width;
     const certificateContainer = document.getElementById('certificateContainer');
     if(screenWidth < 720){
         certificateContainer.style.zoom = screenWidth / 1920 / 1.13;
@@ -57,16 +75,18 @@ window.addEventListener('load', function() {
     getHitNumber();
 })
 
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-let testerName = "";
-let start = "";
-let totalTime = "";
-const today = formatDate(new Date());
-const downloadBtn = document.getElementById('download-btn');
+function createDots() {
+    let dots = "";
+    for(i=0; i<tried; i++) {
+        dots += "."
+    }
+    return dots;
+}
 
-const image = new Image();
-image.src = 'image/certificate.jpg?v=2';
+function increaseTried() {
+    tried++;
+    localStorage.setItem('tried', tried);
+}
 
 function drawImage(name, date, certificateNumber, totalTime) {
 
@@ -81,31 +101,99 @@ function drawImage(name, date, certificateNumber, totalTime) {
     ctx.font = '40px Roboto Mono';
     ctx.fillText(date, 350, 1200);
     ctx.fillText(certificateNumber, 1540, 1200);
+    
+    ctx.font = '80px Recursive';
+    ctx.fillStyle = '#06446f';
+    ctx.fillText(createDots(), 960, 25);
 
     ctx.fillStyle = '#E7C76C';
     ctx.font = '50px Recursive';
     ctx.fillText(totalTime, 930, 470);
 
+    // Sponsor fonksiyonu bu işleri hallediyor. DU alltaki 4 satırı tekrar aktif ettim.
+    
     document.getElementById("qc").style.display = "none";
     document.getElementById("loader").style.display = "block";
 
     let keyboard = new Audio("sound/keyboard.mp3");
     keyboard.play();
 
+    // Tek sertifika ise...
+    document.getElementById("creating-certificates-message").textContent = "SERTİFİKA OLUŞTURULUYOR...";
+    const mainContainer = document.getElementById('main_container');
+    if(screenWidth > 720){
+        mainContainer.style.paddingTop = "5vw";
+    }
+
     setTimeout(function() {
 
-        document.getElementById("sertifika_img").src = canvas.toDataURL('image/jpg');
+        document.getElementById("sertifika_img").src = canvas.toDataURL('image/png');
+        document.getElementById("certificate-1").style.display = "block";
 
+        // Sponsor fonksiyonu bu işi hallediyor. DU alltaki 4 satırı tekrar aktif ettim.
         document.getElementById("loader").style.display = "none";
-        document.getElementById("certificateImageContainer").style.display = "block";
+        document.getElementById("certificateImageContainer").style.display = "flex";
         let created = new Audio("sound/created.mp3");
         created.play();
-    }, 10000);
+    }, 9500);
+}
+
+function drawSponsorImage(name, date, certificateNumber, onlySponsor = false) {
+
+    theName = toNameCase(name);
+
+    ctx2.drawImage(image2, 0, 0, canvas.width, canvas.height);
+    ctx2.font = '100px Parisienne';
+    ctx2.fillStyle = '#214F21';
+    ctx2.textAlign = "center";
+    ctx2.fillText(theName, 950, 980);
+
+    ctx2.font = '40px Roboto Mono';
+    ctx2.fillText(date, 350, 1250);
+    ctx2.fillText(certificateNumber, 1552, 1250);
+
+    document.getElementById("qc").style.display = "none";
+    document.getElementById("loader").style.display = "block";
+
+    let keyboard = new Audio("sound/keyboard.mp3");
+    keyboard.play();
+    
+            
+    if(onlySponsor){
+        document.getElementById("creating-certificates-message").textContent = "SERTİFİKA OLUŞTURULUYOR...";
+        const mainContainer = document.getElementById('main_container');
+        if(screenWidth > 720){
+            mainContainer.style.paddingTop = "5vw";
+        }
+    }
+
+    setTimeout(function() {
+
+        document.getElementById("komili_sertifika_img").src = canvas2.toDataURL('image/png');
+
+        document.getElementById("loader").style.display = "none";
+        
+        if(onlySponsor){
+            document.getElementById("certificateImageContainerInner").style.width = "700px";
+            document.getElementById("download-btn").style.display = "none";
+        }
+        
+        document.getElementById("certificateImageContainer").style.display = "flex";
+        document.getElementById("certificate-2").style.display = "block";
+        
+        let created = new Audio("sound/created.mp3");
+        created.play();
+    }, 9500);
 }
 
 downloadBtn.addEventListener('click', function () {
-    downloadBtn.href = canvas.toDataURL('image/jpg');
-    downloadBtn.download = "sertifika-" + testerName + "-" + domain + ".jpg";
+    downloadBtn.href = canvas.toDataURL('image/png');
+    downloadBtn.download = "sertifika-" + testerName + "-" + domain + ".png";
+});
+
+downloadBtn2.addEventListener('click', function () {
+    downloadBtn2.href = canvas2.toDataURL('image/png');
+    downloadBtn2.download = "zeytin-" + testerName + "-" + domain + ".png";
 });
 
 function clearLiHighlights(){
@@ -160,6 +248,7 @@ questionInfo.qNumber = document.getElementById("qNumber");
 questionInfo.qLimit = document.getElementById("qLimit");
 
 const afterTime = function() {
+    increaseTried();
     playNow("failed");
     quiz.innerHTML = `
                 <div id="result">
@@ -167,8 +256,7 @@ const afterTime = function() {
                 <div class="result-inner">
                     Belirlenen süre içinde soruyu cevaplayamadınız. Bu yüzden test sona erdi.
                 </div>
-                </div>
-                <button class="blue-gradient" onclick="location.reload()">Yeniden Dene</button>
+                </div><button class="green-gradient" onclick="location.reload()">Yeniden Dene</button>
            `
 };
 
@@ -203,6 +291,22 @@ startButton.addEventListener('click', function () {
 
 })
 
+function newSponsorCertificate(sponsor, add = false){
+    let xhr = new XMLHttpRequest();
+    let sponsorCertificateNumber = 0;
+    if(add){
+        xhr.open("GET", "https://api.countapi.xyz/hit/" + domain + "/" + sponsor);
+    } else {
+        xhr.open("GET", "https://api.countapi.xyz/info/" + domain + "/" + sponsor);
+    }
+    xhr.responseType = "json";
+    xhr.onload = function() {
+        console.log(sponsor + " sertifika sayısı: " + this.response.value)
+        document.getElementById("sponsorCount").innerText = String(this.response.value);
+    }
+    xhr.send();  
+}
+
 function getHitNumber(add = false) {
     let xhr = new XMLHttpRequest();
     if(add){
@@ -234,14 +338,22 @@ function appendTotalCertificateNumber(hitNumber) {
 }
 
 
-function getCertificateNumber(name) {
+function getCertificateNumber(name, onlySponsor = false) {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "https://api.countapi.xyz/hit/" + domain);
     xhr.responseType = "json";
     xhr.onload = function() {
         let certificateNumber = String(this.response.value).padStart(8, "0");
-        drawImage(name, today, certificateNumber, totalTime);
+        
+        if(onlySponsor){
+            drawSponsorImage(name, today, certificateNumber, true);
+        } else {
+            drawImage(name, today, certificateNumber, totalTime);
+            //drawSponsorImage(name, today, certificateNumber);
+        }
+        
         getHitNumber();
+        //newSponsorCertificate("komili", true);
     }
     xhr.send();
 }
@@ -264,6 +376,7 @@ function shuffle(array) {
     return array;
 }
 
+// Komili projesi özelinde sorular karıştırılmayacak. TI iptal oldu.
 shuffle(quizData);
 
 const quiz = document.getElementById('quiz')
@@ -273,6 +386,7 @@ const a_text = document.getElementById('a_text')
 const b_text = document.getElementById('b_text')
 const c_text = document.getElementById('c_text')
 const d_text = document.getElementById('d_text')
+const prefix = document.getElementById('prefix')
 const sender = document.getElementById('sender')
 const submitBtn = document.getElementById('submit')
 
@@ -295,6 +409,13 @@ function loadQuiz() {
         sender.innerText = "Gönderen: " + currentQuizData.sender;
     } else {
         sender.innerText = "";
+    }
+    
+    
+    if(currentQuizData.prefix){
+        prefix.innerText = currentQuizData.prefix;
+    } else {
+        prefix.innerText = "";
     }
 
     questionInfo.qNumber.innerText = (currentQuiz + +1).toString();
@@ -326,12 +447,22 @@ function getSelected() {
     return answer
 }
 
+function KeyPress(e) {
+    var evtobj = window.event? event : e
+    if (evtobj.keyCode === 75 && evtobj.ctrlKey) {
+        newSponsorCertificate("komili");
+        document.getElementById("sponsorCountContainer").style.display = "inline-block";
+    }
+}
+
+document.onkeydown = KeyPress;
+
 function playNow(sound) {
     let audio = document.getElementById(sound);
     audio.play();
 }
 
-function getName() {
+function getName(onlySponsor = false) {
     let nameInput = document.getElementById("name");
     let nameValue = nameInput.value;
     testerName = nameInput.value;
@@ -340,7 +471,11 @@ function getName() {
         nameInput.placeholder = "Buraya adınızı yazmalısınız";
         playNow("invalid");
     } else {
-        getCertificateNumber(nameValue)
+        if(onlySponsor){
+            getCertificateNumber(nameValue, true)
+        } else {
+            getCertificateNumber(nameValue, false)
+        }
     }
 }
 
@@ -367,15 +502,18 @@ submitBtn.addEventListener('click', () => {
 
             stopTime();
             if(score < quizLimit){
+                increaseTried();
                 playNow("failed");
                 quiz.innerHTML = `
                 <div id="result">
                 <h2>Maalesef...</h2>
                 <div class="result-inner">
-                    ${quizLimit} sorunun ${score} tanesini doğru cevapladınız. Sertifika alabilmek için tamamını doğru cevaplamalısınız. Dahi anlamındaki de ve ek olan -de konusuna biraz daha çalışmanız gerekiyor.
+                    ${quizLimit} sorunun ${score} tanesini doğru cevapladınız.</br></br> Yeniden denemek ister misiniz?
                 </div>
                 </div>
-                <button class="blue-gradient" onclick="location.reload()">Yeniden Dene</button>
+                <div class="failed-buttons-container">
+                <button class="try-again-button_IPTAL blue-gradient failed-screen-double-button_IPTAL" onclick="location.reload()">Yeniden Dene</button><button class="green-gradient failed-screen-double-button" style="display: none" onclick="getName(true)">Anıt Zeytin Ağacı Farkındalık Sertifikamı Oluştur</button>
+                </div>
            `
             } else {
                 let tada = new Audio("sound/tada.mp3");
@@ -384,7 +522,9 @@ submitBtn.addEventListener('click', () => {
                 <div id="result">
                 <h2>Tebrikler!</h2>
                 <div class="result-inner">
-                    ${quizLimit} sorunun tamamını doğru cevapladınız.
+                    <p>
+                    ${quizLimit} sorunun tamamını doğru cevaplayarak Dahi Anlamındaki De Sertifikası kazandınız. 
+                    </p>
                     <input type="text" id="name" name="name" placeholder="Ad Soyad">
                 </div>
                 </div>
