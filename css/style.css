@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@500&family=Syne&display=swap');
 
 * {
   box-sizing: border-box;
@@ -12,7 +12,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Overpass Mono', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,7 +125,8 @@ audio {
 
 .result-inner,
 .welcome-inner {
-  padding: 20px;
+    padding: 20px;
+    text-align: center;
 }
 
 h2 {
@@ -133,8 +134,8 @@ h2 {
   text-align: center;
   margin: 0;
   font-size: 20px;
-  color: #1B452B;
-  text-shadow: 2px 1px 10px #c8c7cc;
+  /* color: #1B452B;
+  text-shadow: 2px 1px 10px #c8c7cc; */
 }
 
 ul {
@@ -285,7 +286,7 @@ img.logo {
 
 .selectedAnswer,
 li:hover {
-  background-color: rgb(49 115 53 / 25%);
+  background-color: #eff2f1;
 }
 
 #result h2,
@@ -483,20 +484,20 @@ li:hover {
 }
 
 .certProgress-moved .certProgressBar {
-  background-color: #1b452b;
+  background-color: #2d9dda;
   animation: certProgress 10s infinite;
 }
 
 @keyframes certProgress {
   0% {
     width: 0%;
-    background: #68a15a;
+    background: #107db2;
   }
 
   100% {
     width: 100%;
-    background: #015e01;
-    box-shadow: 0 0 40px #015e01;
+    background: #074f9d;
+    box-shadow: 0 0 40px #162249;
   }
 }
 

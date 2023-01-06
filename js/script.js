@@ -110,24 +110,31 @@ function drawImage(name, date, certificateNumber, totalTime) {
     ctx.font = '50px Recursive';
     ctx.fillText(totalTime, 930, 470);
 
-    // Sponsor fonksiyonu bu işleri hallediyor.
+    // Sponsor fonksiyonu bu işleri hallediyor. DU alltaki 4 satırı tekrar aktif ettim.
     
-    // document.getElementById("qc").style.display = "none";
-    // document.getElementById("loader").style.display = "block";
+    document.getElementById("qc").style.display = "none";
+    document.getElementById("loader").style.display = "block";
 
-    // let keyboard = new Audio("sound/keyboard.mp3");
-    // keyboard.play();
+    let keyboard = new Audio("sound/keyboard.mp3");
+    keyboard.play();
+
+    // Tek sertifika ise...
+    document.getElementById("creating-certificates-message").textContent = "SERTİFİKA OLUŞTURULUYOR...";
+    const mainContainer = document.getElementById('main_container');
+    if(screenWidth > 720){
+        mainContainer.style.paddingTop = "5vw";
+    }
 
     setTimeout(function() {
 
         document.getElementById("sertifika_img").src = canvas.toDataURL('image/png');
         document.getElementById("certificate-1").style.display = "block";
 
-        // Sponsor fonksiyonu bu işi hallediyor.
-        // document.getElementById("loader").style.display = "none";
-        // document.getElementById("certificateImageContainer").style.display = "flex";
-        // let created = new Audio("sound/created.mp3");
-        // created.play();
+        // Sponsor fonksiyonu bu işi hallediyor. DU alltaki 4 satırı tekrar aktif ettim.
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("certificateImageContainer").style.display = "flex";
+        let created = new Audio("sound/created.mp3");
+        created.play();
     }, 9500);
 }
 
@@ -342,11 +349,11 @@ function getCertificateNumber(name, onlySponsor = false) {
             drawSponsorImage(name, today, certificateNumber, true);
         } else {
             drawImage(name, today, certificateNumber, totalTime);
-            drawSponsorImage(name, today, certificateNumber);
+            //drawSponsorImage(name, today, certificateNumber);
         }
         
         getHitNumber();
-        newSponsorCertificate("komili", true);
+        //newSponsorCertificate("komili", true);
     }
     xhr.send();
 }
@@ -369,8 +376,8 @@ function shuffle(array) {
     return array;
 }
 
-// Komili projesi özelinde sorular karıştırılmayacak.
-//shuffle(quizData);
+// Komili projesi özelinde sorular karıştırılmayacak. TI iptal oldu.
+shuffle(quizData);
 
 const quiz = document.getElementById('quiz')
 const answerEls = document.querySelectorAll('.answer')
@@ -501,12 +508,11 @@ submitBtn.addEventListener('click', () => {
                 <div id="result">
                 <h2>Maalesef...</h2>
                 <div class="result-inner">
-                    ${quizLimit} sorunun ${score} tanesini doğru cevapladınız.</br></br> Ama soruları cevaplarken farkında olmadan siz de “Anıt Ağaçlar” hakkında bilgi sahibi olup “Komili Anıt Zeytin Ağacı Projesi”nin bir elçisi oldunuz. Tebrikler.
-<input type="text" id="name" name="name" placeholder="Ad Soyad">
+                    ${quizLimit} sorunun ${score} tanesini doğru cevapladınız.</br></br> Yeniden denemek ister misiniz?
                 </div>
                 </div>
                 <div class="failed-buttons-container">
-                <button class="try-again-button failed-screen-double-button" onclick="location.reload()">Yeniden Dene</button><button class="green-gradient failed-screen-double-button" onclick="getName(true)">Anıt Zeytin Ağacı Farkındalık Sertifikamı Oluştur</button>
+                <button class="try-again-button_IPTAL blue-gradient failed-screen-double-button_IPTAL" onclick="location.reload()">Yeniden Dene</button><button class="green-gradient failed-screen-double-button" style="display: none" onclick="getName(true)">Anıt Zeytin Ağacı Farkındalık Sertifikamı Oluştur</button>
                 </div>
            `
             } else {
@@ -516,14 +522,13 @@ submitBtn.addEventListener('click', () => {
                 <div id="result">
                 <h2>Tebrikler!</h2>
                 <div class="result-inner">
-                    ${quizLimit} sorunun tamamını doğru cevapladınız.
                     <p>
-                    Tebrikler. Dahi Anlamındaki De Sertifikası’na ek olarak, farkında olmadan “Anıt Ağaçlar” hakkında bilgi sahibi olup “Komili Anıt Zeytin Ağacı Projesi”nin <b>de</b> bir elçisi oldunuz. 
+                    ${quizLimit} sorunun tamamını doğru cevaplayarak Dahi Anlamındaki De Sertifikası kazandınız. 
                     </p>
                     <input type="text" id="name" name="name" placeholder="Ad Soyad">
                 </div>
                 </div>
-                <button class="green-gradient" onclick="getName()">Sertifikalarımı Oluştur</button>
+                <button class="blue-gradient" onclick="getName()">Sertifikamı Oluştur</button>
             `
             }
         }
