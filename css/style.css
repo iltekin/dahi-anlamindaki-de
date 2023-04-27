@@ -1,30 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@500&family=Syne&display=swap');
 
 * {
-  box-sizing: border-box;
-  user-select: none;
+    box-sizing: border-box;
+    user-select: none;
 }
 
 body {
-  background-color: #ffffff;
-  background-image: url("../image/background.jpg");
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: 'Overpass Mono', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
+    background-color: #ffffff;
+    background-image: url("../image/background.jpg");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Overpass Mono', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 #success_rate {
-  right: 3vw;
-  bottom: 1vw;
-  position: absolute;
+    right: 3vw;
+    bottom: 1vw;
+    position: absolute;
 }
 
 #bilgilendirme {
@@ -36,39 +36,39 @@ body {
 }
 
 .kahve_ismarla {
-  margin-top: 15px;
-  margin-left: 10px;
+    margin-top: 15px;
+    margin-left: 10px;
 }
 
 audio {
-  display: none;
+    display: none;
 }
 
 .quiz-container {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 10px rgba(100, 100, 100, 0.1);
-  width: 700px;
-  overflow: hidden;
-  max-width: 90%;
-  line-height: 1.6;
-  align-self: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 10px rgba(100, 100, 100, 0.1);
+    width: 700px;
+    overflow: hidden;
+    max-width: 90%;
+    line-height: 1.6;
+    align-self: center;
 }
 
 #quiz {
-  display: none;
+    display: none;
 }
 
 #quiz-progress {
-  width:100%;
-  position: relative;
-  height: 5px;
+    width: 100%;
+    position: relative;
+    height: 5px;
 }
 
 #quiz-progress #progress-bar {
-  width:0%;
-  height: 5px;
-  transition: width 1s;
+    width: 0%;
+    height: 5px;
+    transition: width 1s;
 }
 
 .blue-gradient {
@@ -80,11 +80,11 @@ audio {
 }
 
 .green-gradient {
-  background: #28512C linear-gradient(90deg, #317335, #28512C);
+    background: #28512C linear-gradient(90deg, #317335, #28512C);
 }
 
 .green-gradient:hover {
-  background: #28512C linear-gradient(90deg, #317335, #3D6119, #28512C);
+    background: #28512C linear-gradient(90deg, #317335, #3D6119, #28512C);
 }
 
 .try-again-button {
@@ -105,22 +105,22 @@ audio {
 }
 
 #result {
-  padding: 20px;
+    padding: 20px;
 }
 
 #result input {
-  width: 100%;
-  padding: 20px;
-  font-size: 24px;
-  font-family: inherit;
-  border: none;
-  border-bottom: 1px solid #000000;
-  outline: none;
-  margin-top: 20px;
+    width: 100%;
+    padding: 20px;
+    font-size: 24px;
+    font-family: inherit;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+    margin-top: 20px;
 }
 
 .quiz-header {
-  margin: 0;
+    margin: 0;
 }
 
 .result-inner,
@@ -130,50 +130,50 @@ audio {
 }
 
 h2 {
-  padding: 2rem;
-  text-align: center;
-  margin: 0;
-  font-size: 20px;
-  /* color: #1B452B;
-  text-shadow: 2px 1px 10px #c8c7cc; */
+    padding: 2rem;
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+    /* color: #1B452B;
+    text-shadow: 2px 1px 10px #c8c7cc; */
 }
 
 ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 0 2rem;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 2rem;
 }
 
 ul li {
-  display: flex;
-  font-size: 1.2rem;
-  padding: 0.75rem 2rem;
-  margin: 0;
-  cursor: pointer;
+    display: flex;
+    font-size: 1.2rem;
+    padding: 0.75rem 2rem;
+    margin: 0;
+    cursor: pointer;
 }
 
 ul li label {
-  cursor: pointer;
-  flex-grow: 1;
-  padding-left: 10px;
+    cursor: pointer;
+    flex-grow: 1;
+    padding-left: 10px;
 }
 
 input[type="radio"] {
-  zoom: 1.5;
-  margin: auto;
+    zoom: 1.5;
+    margin: auto;
 }
 
 button {
-  color: #fff;
-  border: none;
-  display: block;
-  width: 100%;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-family: inherit;
-  padding: 1.3rem;
-  text-align: center;
-  text-decoration: none;
+    color: #fff;
+    border: none;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: inherit;
+    padding: 1.3rem;
+    text-align: center;
+    text-decoration: none;
 }
 
 #prefix {
@@ -186,112 +186,112 @@ button {
 .other-btn,
 #download-btn,
 #download-btn-komili {
-  margin-top: 10px;
-  border-radius: 10px;
-  color: #fff;
-  border: none;
-  display: block;
-  max-width: 100%;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-family: inherit;
-  padding: 1.3rem;
-  text-align: center;
-  text-decoration: none;
-  flex-grow: 1;
-  box-shadow: #c8c7cc 1px 1px 6px 3px;
+    margin-top: 10px;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+    display: block;
+    max-width: 100%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: inherit;
+    padding: 1.3rem;
+    text-align: center;
+    text-decoration: none;
+    flex-grow: 1;
+    box-shadow: #c8c7cc 1px 1px 6px 3px;
 }
 
 .other-btn {
-  flex-grow: unset;
-  margin-left: 10px;
+    flex-grow: unset;
+    margin-left: 10px;
 }
 
 .other-btn-sm {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .button-container {
-  display: flex;
+    display: flex;
 }
 
 img.logo {
-  position: absolute;
-  top: 3vw;
-  left: 3vw;
-  width: 10vw;
+    position: absolute;
+    top: 3vw;
+    left: 3vw;
+    width: 10vw;
 }
 
 #questionInfo {
-  position: absolute;
-  bottom: 3vw;
-  left: 3vw;
-  width: 10vw;
-  font-size: 20px;
+    position: absolute;
+    bottom: 3vw;
+    left: 3vw;
+    width: 10vw;
+    font-size: 20px;
 }
 
 #questionInfo div:first-child {
-  border-bottom: 2px solid #000000;
-  margin-bottom: 5px;
+    border-bottom: 2px solid #000000;
+    margin-bottom: 5px;
 }
 
 #questionInfo #qNumber {
-  font-size: 40px;
+    font-size: 40px;
 }
 
 #menu {
-  position: absolute;
-  top: 4vw;
-  right: 4vw;
-  z-index: 3;
+    position: absolute;
+    top: 4vw;
+    right: 4vw;
+    z-index: 3;
 }
 
 #time {
-  position: absolute;
-  bottom: 3vw;
-  right: 3vw;
-  width: 10vw;
-  font-size: 20px;
-  text-align: right;
+    position: absolute;
+    bottom: 3vw;
+    right: 3vw;
+    width: 10vw;
+    font-size: 20px;
+    text-align: right;
 }
 
 #time-progressbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
 }
 
 #time div:first-child {
-  border-bottom: 2px solid #000000;
-  margin-bottom: 5px;
+    border-bottom: 2px solid #000000;
+    margin-bottom: 5px;
 }
 
 #time #timeLeft {
-  font-size: 40px;
+    font-size: 40px;
 }
 
 #footer {
-  width: 100vw;
-  font-size: 12px;
-  text-align: center;
-  margin-top: auto;
-  padding-bottom: 5px;
+    width: 100vw;
+    font-size: 12px;
+    text-align: center;
+    margin-top: auto;
+    padding-bottom: 5px;
 }
 
 #footer img {
-  height: 16px;
+    height: 16px;
 }
 
 .selectedAnswer,
 li:hover {
-  background-color: #eff2f1;
+    background-color: #eff2f1;
 }
 
 #result h2,
 #welcome-message h2 {
-  padding-bottom: 0;
+    padding-bottom: 0;
 }
 
 #sponsor {
@@ -330,19 +330,19 @@ li:hover {
 }
 
 #certificateContainer {
-  min-width: 1920px;
-  display: none;
+    min-width: 1920px;
+    display: none;
 }
 
 #certificateImageContainer {
-  width: 100%;
-  justify-content: center;
+    width: 100%;
+    justify-content: center;
 }
 
 #certificateImages img {
-  width: 100%;
-  box-shadow: #c8c7cc 1px 1px 7px 7px;
-  border-radius: 10px;
+    width: 100%;
+    box-shadow: #c8c7cc 1px 1px 7px 7px;
+    border-radius: 10px;
 }
 
 #certificateImageContainerInner {
@@ -366,73 +366,75 @@ li:hover {
 }
 
 .progressbar {
-  width: 100%;
+    width: 100%;
 }
 
 .progressbar .inner {
-  height: 5px;
-  animation: progressbar-countdown;
-  /* Placeholder, this will be updated using javascript */
-  animation-duration: 40s;
-  /* We stop in the end */
-  animation-iteration-count: 1;
-  /* Stay on pause when the animation is finished finished */
-  animation-fill-mode: forwards;
-  /* We start paused, we start the animation using javascript */
-  animation-play-state: paused;
-  /* We want a linear animation, ease-out is standard */
-  animation-timing-function: linear;
+    height: 5px;
+    animation: progressbar-countdown;
+    /* Placeholder, this will be updated using javascript */
+    animation-duration: 40s;
+    /* We stop in the end */
+    animation-iteration-count: 1;
+    /* Stay on pause when the animation is finished finished */
+    animation-fill-mode: forwards;
+    /* We start paused, we start the animation using javascript */
+    animation-play-state: paused;
+    /* We want a linear animation, ease-out is standard */
+    animation-timing-function: linear;
 }
+
 @keyframes progressbar-countdown {
-  0% {
-    width: 100%;
-    background: #097f97;
-  }
-  100% {
-    width: 0%;
-    background: #03376d;
-  }
+    0% {
+        width: 100%;
+        background: #097f97;
+    }
+    100% {
+        width: 0%;
+        background: #03376d;
+    }
 }
 
 #menuContents {
-  margin-top: 40px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  padding: 10px;
-  box-shadow: 0 0 10px 10px rgb(100 100 100 / 10%);
-  width: 300px;
+    margin-top: 40px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 0 10px 10px rgb(100 100 100 / 10%);
+    width: 300px;
 }
+
 #menuContents h2 {
-  padding: 1rem;
+    padding: 1rem;
 }
 
 .menu-inner {
-  padding: 0 1rem 1rem;
-  line-height: 1.5;
+    padding: 0 1rem 1rem;
+    line-height: 1.5;
 }
 
 #info {
-  background: #000000;
-  color: #FFFFFF;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
+    background: #000000;
+    color: #FFFFFF;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
 }
 
 #download-notice {
-  display: none;
-  margin: 20px 10px;
-  padding: 10px;
-  line-height: 1.2;
-  background: rgb(232 194 88 / 25%);
-  border-radius: 10px;
+    display: none;
+    margin: 20px 10px;
+    padding: 10px;
+    line-height: 1.2;
+    background: rgb(232 194 88 / 25%);
+    border-radius: 10px;
 }
 
 
@@ -448,7 +450,7 @@ li:hover {
     font-size: 12px;
 }
 
-    
+
 .noticeIcon {
     width: 12px;
     margin-right: 15px;
@@ -460,7 +462,7 @@ li:hover {
 }
 
 .hideThis {
-  display: none;
+    display: none;
 }
 
 #loader {
@@ -472,164 +474,169 @@ li:hover {
 }
 
 .certProgress {
-  border-radius: 30px;
-  background-color: #e4e1e2;
+    border-radius: 30px;
+    background-color: #e4e1e2;
 }
 
 .certProgressBar {
-  height: 18px;
-  border-radius: 30px;
-  transition: 0.4s linear;
-  transition-property: width, background-color;
+    height: 18px;
+    border-radius: 30px;
+    transition: 0.4s linear;
+    transition-property: width, background-color;
 }
 
 .certProgress-moved .certProgressBar {
-  background-color: #2d9dda;
-  animation: certProgress 10s infinite;
+    background-color: #2d9dda;
+    animation: certProgress 10s infinite;
 }
 
 @keyframes certProgress {
-  0% {
-    width: 0%;
-    background: #107db2;
-  }
+    0% {
+        width: 0%;
+        background: #107db2;
+    }
 
-  100% {
-    width: 100%;
-    background: #074f9d;
-    box-shadow: 0 0 40px #162249;
-  }
+    100% {
+        width: 100%;
+        background: #074f9d;
+        box-shadow: 0 0 40px #162249;
+    }
 }
 
 .certProgressLoader {
-  --p: 0;
-  animation: p 10s steps(100) infinite;
-  counter-reset: p var(--p);
-  font-size: 2.1em;
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: #000000;
-  transform: translateY(-100%);
-  display: none;
+    --p: 0;
+    animation: p 10s steps(100) infinite;
+    counter-reset: p var(--p);
+    font-size: 2.1em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #000000;
+    transform: translateY(-100%);
+    display: none;
 }
 
 .certProgressLoader:after {
-  content: counter(p) "%";
+    content: counter(p) "%";
 }
 
 @keyframes p {
-  90%,
-  100% {
-    --p: 100;
-  }
+    90%,
+    100% {
+        --p: 100;
+    }
 }
 
 @media screen and (max-width: 921px) {
 
-  h2 {
-    font-size: 15px;
-    padding: 1rem;
-  }
+    h2 {
+        font-size: 15px;
+        padding: 1rem;
+    }
 
-  ul li {
-    font-size: 1rem;
-    padding: 0.5rem;
-  }
+    ul li {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
 
-  .quiz-container {
-    z-index: 2;
-  }
-  
+    .quiz-container {
+        z-index: 2;
+    }
+
     #main_container {
         justify-content: start;
         padding-top: 40vw;
     }
-    
+
     #email-notice {
         margin-top: 0;
         background: rgb(203 221 215);
         font-size: initial;
     }
-    
+
     .noticeIcon {
-        width: 25%!important;
+        width: 25% !important;
     }
 
     #certificateImages {
         flex-direction: column-reverse;
     }
-        
+
     #certificateImages > div {
-        margin-bottom:15px;
+        margin-bottom: 15px;
     }
 
-  #questionInfo {
-    top: 3vw;
-    bottom: unset;
-    width: 30vw;
-  }
+    #questionInfo {
+        top: 3vw;
+        bottom: unset;
+        width: 30vw;
+    }
 
-  #time {
-    top: 15vw;
-    left: 3vw;
-    text-align: left;
-    right: unset;
-    bottom: unset;
-    width: 30vw;
-  }
+    #time {
+        top: 15vw;
+        left: 3vw;
+        text-align: left;
+        right: unset;
+        bottom: unset;
+        width: 30vw;
+    }
 
-  #timeLeft {
-    font-size: 30px;
-  }
+    #timeLeft {
+        font-size: 30px;
+    }
 
-  #success_rate {
-    position: static;
-    margin-bottom: 10px;
-  }
+    #success_rate {
+        position: static;
+        margin-bottom: 10px;
+    }
 
-  .button-container {
-    flex-direction: column;
-  }
+    .button-container {
+        flex-direction: column;
+    }
 
-  .kahve_ismarla {
-    margin-top: 0;
-    max-width: 50%;
-  }
+    .kahve_ismarla {
+        margin-top: 0;
+        max-width: 50%;
+    }
 
-  .kahve_ismarla img {
-    width: 100%;
-  }
+    .kahve_ismarla img {
+        width: 100%;
+    }
 
-  #time div:first-child,
-  #questionInfo div:first-child{
-    display: none;
-  }
+    #time div:first-child,
+    #questionInfo div:first-child {
+        display: none;
+    }
 
-  #download-btn,
-  #download-btn-komili {
-    display: none;
-  }
+    #download-btn,
+    #download-btn-komili {
+        display: none;
+    }
 
-  #download-notice {
-    display: flex;
-  }
+    #download-notice {
+        display: flex;
+    }
 
-  img.logo {
-    position: absolute;
-    top: 3vw;
-    left: 50%;
-    height: 22vw;
-    width: auto;
-    transform: translateX(-50%);
-  }
+    img.logo {
+        position: absolute;
+        top: 3vw;
+        left: 50%;
+        height: 22vw;
+        width: auto;
+        transform: translateX(-50%);
+    }
 
-  .btn1 {
-    zoom:0.8;
-  }
+    .btn1 {
+        zoom: 0.8;
+    }
 
-  input[type="radio"] {
-    min-width: 20px;
-  }
+    input[type="radio"] {
+        min-width: 20px;
+    }
+
+    #menu {
+        top: 12vw;
+        right: 6vw;
+    }
 
 }
