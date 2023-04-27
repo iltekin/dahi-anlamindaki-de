@@ -93,7 +93,15 @@ function drawImage(name, date, certificateNumber, totalTime) {
     theName = toNameCase(name);
 
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-    ctx.font = '150px Parisienne';
+
+    let countChars = theName.length;
+    if(countChars <= 15){
+        ctx.font = '150px Parisienne';
+    } else {
+        actualFontSize = 150 - (countChars - 15) * 5;
+        ctx.font = actualFontSize + 'px Parisienne';
+    }
+
     ctx.fillStyle = '#001439';
     ctx.textAlign = "center";
     ctx.fillText(theName, 950, 930);
@@ -188,12 +196,12 @@ function drawSponsorImage(name, date, certificateNumber, onlySponsor = false) {
 
 downloadBtn.addEventListener('click', function () {
     downloadBtn.href = canvas.toDataURL('image/png');
-    downloadBtn.download = "sertifika-" + testerName + "-" + domain + ".png";
+    downloadBtn.download = "sertifika-" + testerName + ".png";
 });
 
 downloadBtn2.addEventListener('click', function () {
     downloadBtn2.href = canvas2.toDataURL('image/png');
-    downloadBtn2.download = "zeytin-" + testerName + "-" + domain + ".png";
+    downloadBtn2.download = "zeytin-" + testerName + ".png";
 });
 
 function clearLiHighlights(){
@@ -295,9 +303,9 @@ function newSponsorCertificate(sponsor, add = false){
     let xhr = new XMLHttpRequest();
     let sponsorCertificateNumber = 0;
     if(add){
-        xhr.open("GET", "https://api.countapi.xyz/hit/" + domain + "/" + sponsor);
+        xhr.open("GET", api + "/incr/success2");
     } else {
-        xhr.open("GET", "https://api.countapi.xyz/info/" + domain + "/" + sponsor);
+        xhr.open("GET", api + "/get/success2");
     }
     xhr.responseType = "json";
     xhr.onload = function() {
@@ -310,9 +318,9 @@ function newSponsorCertificate(sponsor, add = false){
 function getHitNumber(add = false) {
     let xhr = new XMLHttpRequest();
     if(add){
-        xhr.open("GET", "https://api.countapi.xyz/hit/" + domain + "/hit");
+        xhr.open("GET", api + "/incr/start");
     } else {
-        xhr.open("GET", "https://api.countapi.xyz/info/" + domain + "/hit");
+        xhr.open("GET", api + "/get/start");
     }
     xhr.responseType = "json";
     xhr.onload = function() {
@@ -325,7 +333,7 @@ function getHitNumber(add = false) {
 
 function appendTotalCertificateNumber(hitNumber) {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://api.countapi.xyz/info/" + domain);
+    xhr.open("GET", api + "/get/success");
     xhr.responseType = "json";
     xhr.onload = function() {
         document.getElementById("certificates").innerText = String(numberWithCommas(this.response.value));
@@ -340,7 +348,7 @@ function appendTotalCertificateNumber(hitNumber) {
 
 function getCertificateNumber(name, onlySponsor = false) {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://api.countapi.xyz/hit/" + domain);
+    xhr.open("GET", api + "/incr/success");
     xhr.responseType = "json";
     xhr.onload = function() {
         let certificateNumber = String(this.response.value).padStart(8, "0");
