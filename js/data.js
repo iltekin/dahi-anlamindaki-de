@@ -1,4 +1,4 @@
-const api = "https://count.dahianlamindaki.de:5002";
+const api = "https://count.iltekin.com/dahianlamindakide";
 
 const quizLimit = 10; // default: 10
 const answerTime = 15; //default: 15
